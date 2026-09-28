@@ -5,16 +5,19 @@ message: "Hari Romeow adalah siklus lucu yang berulang tanpa henti — tidur, mi
 arc: Judul buku → 7 fase siklus (tiap fase = satu lelucon + satu fakta) → kembali ke fase ① (loop)
 audience: penonton Reels/TikTok/Shorts, pecinta kucing
 mode: collaborative
-version: v1
+version: v2
 ---
 
-# Siklus Hidup Romeow — storyboard v1
+# Siklus Hidup Romeow — storyboard v2
 
 ## Keputusan
 
 - **Pesan:** Hari Romeow adalah siklus lucu yang berulang tanpa henti.
 - **Penonton dan alur:** pecinta kucing di feed vertikal. Judul buku → 7 fase → loop kembali ke ①.
 - **Format:** 1080×1920, 30 detik, tanpa narasi, dengan musik latar dan efek suara. Semua teks penting berada di area aman (atas ±12% dan bawah ±20% dikosongkan untuk UI Reels/TikTok).
+- **Romeow = satu aktor yang sama sepanjang video.** Romeow tidak digambar ulang per frame. Ia satu karakter di satu dunia pop-up, dengan ukuran tetap di semua close-up (kepala ±240px). Ia selalu berpijak di "rel" panah siklus, dan berjalan, melompat, atau berlari ke fase berikutnya **di dalam transisi**. Pose akhir di satu fase adalah pose awal di fase berikutnya.
+- **Transisi 3D:** kamera perspektif sungguhan terbang di atas halaman pop-up (rotateX/rotateY/translateZ, parallax antar-lapis, blur kedalaman). Saat kamera pergi, potongan kertas fase lama **terlipat rebah** ke halaman, dan potongan fase baru **berdiri** seperti buku pop-up. Tiap sambungan punya gerak kamera sendiri supaya tidak berulang (lihat peta sambungan).
+- **Tipografi menyatu dengan Romeow:** tidak ada lagi blok judul di atas. Kata-kata mengisi ruang kosong di sekitar Romeow dan bereaksi terhadapnya: melengkung di atas punggungnya, keluar dari mulutnya, jadi jejak lari, tercetak di kardus, jatuh bersama gelas. Hanya folio kecil "GBR. 1.3 · FASE n/7" yang tetap di pojok.
 - **Benang merah (spine):** satu halaman buku pop-up *"Gambar 1.3"* dan **panah siklus biru** yang melingkar. Di setiap fase, sapuan stabilo kuning berjalan di potongan panah menuju fase berikutnya ("kamu di sini"). Romeow selalu berpindah fase mengikuti panah itu. Di penutup, stabilo melengkapi lingkaran lalu memudar, sehingga halaman kembali persis seperti detik 0.
 - **Gaya 2.5D:** potongan kertas pada 3–4 lapis kedalaman (latar halaman, panggung properti, Romeow, label di depan), bayangan jatuh lembut, dan kamera CSS 3D yang bergeser di atas satu dunia pop-up.
 - **Motion typography:**
@@ -39,11 +42,13 @@ version: v1
   - tidak memakai foto kucing asli.
 - **Frame diam (held frame):** fase ⑥, tepat setelah gelas jatuh. Romeow menatap kamera tanpa bergerak selama ±0,8 detik.
 - **Aturan arah:** kamera selalu bergerak **searah jarum jam** mengikuti panah siklus.
-- **Timing manual:** tiap fase adalah sub-komposisi sendiri di timeline Studio. Semua animasi di dalamnya dihitung dari awal klip, jadi menggeser atau memotong klip tidak merusak animasinya.
+- **Timing manual:** Romeow dan dunia pop-up adalah satu lapisan tetap. Tiap fase adalah klip sendiri di timeline Studio (tipografi dan properti fase). Kamera dan perjalanan Romeow dihitung dari batas klip-klip fase itu, jadi saat Anda menggeser atau memotong klip, transisi 3D ikut menyesuaikan.
 
 ## Changes from v1
 
 - Rencana v1 disetujui pengguna tanpa perubahan. Sketsa v1 dibuat di `storyboard.html`.
+- Catatan pengguna atas sketsa v1 (verbatim): "saya mau kucingnya dari frame ke frame itu continue kucing yang sama, lalu ada efek 3D juga ketika transisi.. lalu text typografinya jangan cuma diatas, tapi dia bisa kreatif menyatu dengan romeow mengisi breathed space"
+- v2: Romeow jadi satu aktor kontinu (ukuran tetap, berpijak di rel panah, berpindah fase di dalam transisi). Transisi 3D berupa kamera terbang dengan potongan kertas yang terlipat dan berdiri. Tipografi dipindah dari blok atas ke ruang kosong di sekitar Romeow, di semua frame.
 
 ## Still open
 
@@ -56,7 +61,7 @@ version: v1
 - src: compositions/01-pembuka.html
 - duration: 3s
 - transition_in: cut
-- scene: Diagram pop-up utuh sudah berdiri (identik dengan frame akhir); judul "Gambar 1.3 — Siklus Hidup Romeow" diberi aksen kinetik; Romeow tidur di ①
+- scene: Diagram pop-up utuh dari sudut miring 3D; "Siklus Hidup Romeow" ditulis DI DALAM lingkaran siklus; Romeow tidur di atas ①; keterangan gambar ala buku di bawah
 - voiceover: onscreen
 - blueprint: zoom-out-workspace-reveal (dibalik jadi pop-up berdiri lalu kamera turun) + rules: 3d-camera-flight, svg-path-draw, waterfall-entry
 - hero_prop: panah siklus (callback di Frame 9)
@@ -71,8 +76,8 @@ version: v1
 - status: built
 - src: compositions/02-hibernasi.html
 - duration: 3.5s
-- transition_in: camera-push (lanjutan dari Frame 1)
-- scene: Romeow meringkuk, ekor jadi selimut, "zzz" melayang; label "① Hibernasi Harian"; catatan "tidur 12–16 jam sehari"
+- transition_in: 3d-dive — kamera menukik dari sudut 35° ke ①, potongan fase ① berdiri
+- scene: "Hibernasi Harian" melengkung di atas punggung Romeow seperti selimut; rantai Z keluar dari hidungnya dan berubah jadi "12–16 jam sehari" di ruang kosong atas
 - voiceover: onscreen
 - rules: sine-wave-loop (napas), spring-pop-entrance (label), css-marker-patterns (stabilo "12–16 jam")
 - audio: dengkur lembut
@@ -86,8 +91,8 @@ version: v1
 - status: built
 - src: compositions/03-peregangan.html
 - duration: 3s
-- transition_in: camera-pan-cw
-- scene: Romeow meregang sangat panjang (squash & stretch), menguap lebar; label "② Peregangan Ekstrem"; catatan "melancarkan aliran darah"
+- transition_in: 3d-orbit-glide — kamera mengorbit sepanjang busur, Romeow bangun dan berjalan
+- scene: Romeow meregang diagonal; "Peregangan" dan "EKSTREM" sejajar garis punggungnya dan ikut meregang; fakta di bawah perut
 - voiceover: onscreen
 - rules: press-release-spring (regang lalu kembali), kinetic-beat-slam (kata "EKSTREM" meregang ikut badan)
 - audio: "nyaaawn" menguap
@@ -101,8 +106,8 @@ version: v1
 - status: built
 - src: compositions/04-alarm.html
 - duration: 3.5s
-- transition_in: camera-pan-cw
-- scene: Jam kertas menunjuk 05:00; balon "MEOW!" membesar tiga kali; label "③ Alarm Jam 05.00"; catatan "aktif saat fajar & senja"
+- transition_in: 3d-hop — Romeow melompat, kamera ikut naik (rotateX) lalu turun
+- scene: "MEOW" menyembur dari mulut Romeow tiga kali, makin besar, ke arah jam; "05.00" tertulis di muka jam; "ALARM JAM" melingkar di bingkai jam
 - voiceover: onscreen
 - rules: counting-dynamic-scale (MEOW makin besar), vertical-spring-ticker (angka jam bergulir ke 05:00)
 - audio: meow ×3 makin keras
@@ -116,8 +121,8 @@ version: v1
 - status: built
 - src: compositions/05-makan.html
 - duration: 3.5s
-- transition_in: camera-pan-cw
-- scene: Romeow makan 3 kali lalu pergi; label mangkuk "sisa: 97%"; label "④ Makan 3 Suap"; catatan "suka porsi kecil tapi sering"
+- transition_in: 3d-whip-orbit — kamera berayun cepat dengan blur kedalaman, Romeow berlari kecil ke mangkuk
+- scene: Angka "3" raksasa kuning berdiri di belakang Romeow sebagai lapisan pop-up; "Makan" dan "Suap" mengapitnya; huruf "kriuk" terlempar dari mangkuk; "sisa: 97%" di mangkuk
 - voiceover: onscreen
 - rules: counting-dynamic-scale (100% → 97%), spring-pop-entrance
 - audio: kriuk ×3
@@ -131,8 +136,8 @@ version: v1
 - status: built
 - src: compositions/06-zoomies.html
 - duration: 3.5s
-- transition_in: camera-pan-cw
-- scene: Romeow melesat mengitari lingkaran diagram, kamera ikut berputar, berhenti mendadak; label "⑤ ZOOMIES"; catatan "melepas energi berlebih"
+- transition_in: 3d-spin — kamera berputar mengelilingi pusat lingkaran, Romeow melesat dengan motion blur
+- scene: Huruf Z-O-O-M-I-E-S jadi jejak lari Romeow di sepanjang rel, makin pudar dan meregang ke belakang; halaman miring 3D
 - voiceover: onscreen
 - rules: motion-blur-streak, 3d-camera-flight (putaran kamera), kinetic-beat-slam (ZOOMIES menghantam masuk)
 - audio: whoosh ×2, rem "skrrt"
@@ -146,8 +151,8 @@ version: v1
 - status: built
 - src: compositions/07-gravitasi.html
 - duration: 3.5s
-- transition_in: camera-pan-cw
-- scene: Kaki Romeow mendorong gelas di meja sambil menatap kamera; gelas jatuh; frame diam; label "⑥ Eksperimen Gravitasi"; catatan "naluri pemburu: hidup atau tidak?"
+- transition_in: 3d-crash-low — rem mendadak, kamera turun ke sudut rendah sejajar mata Romeow
+- scene: "Eksperimen" di ruang kosong atas; huruf G-R-A-V-I-T-A-S-I jatuh berputar mengikuti lintasan gelas; Romeow menatap kamera; frame diam
 - voiceover: onscreen
 - rules: nudge-curve (dorongan pelan-pelan), depth-of-field-blur (fokus ke mata Romeow)
 - audio: geser gelas, "tink!", lalu hening 0.8s
@@ -161,8 +166,8 @@ version: v1
 - status: built
 - src: compositions/08-kardus.html
 - duration: 3.5s
-- transition_in: camera-pan-cw
-- scene: Romeow masuk kardus kecil; surai dan ekor menyembul keluar; label "⑦ Masuk Kardus"; catatan "ruang sempit = merasa aman"
+- transition_in: 3d-tilt-follow — kamera mengikuti gelas jatuh (miring ke bawah), mendarat di kardus
+- scene: "KARDUS" tercetak di muka kardus seperti cap pengiriman; panah tulisan tangan "masuk ↓"; label "ISI: 1 KUCING (TERLALU BESAR)"; fakta di label gantung
 - voiceover: onscreen
 - rules: press-release-spring (kardus melentur saat dimasuki), spring-pop-entrance
 - audio: "pluk"
@@ -176,8 +181,8 @@ version: v1
 - status: built
 - src: compositions/09-penutup.html
 - duration: 3s
-- transition_in: camera-pull-back
-- scene: Kamera mundur ke diagram utuh; panah menutup lingkaran; Romeow kembali tidur di ① — frame akhir = frame awal
+- transition_in: 3d-pull-up — kamera naik dan miring ke pandangan halaman penuh
+- scene: Kamera naik dan miring kembali ke pandangan 3D penuh; stabilo menutup lingkaran; Romeow berjalan di rel kembali ke ① dan meringkuk — frame akhir = frame awal
 - voiceover: onscreen
 - blueprint: zoom-out-workspace-reveal + rules: viewport-change (kamera mundur), css-marker-patterns (stabilo menutup lingkaran)
 - hero_prop: panah siklus menutup (callback dari Frame 1)

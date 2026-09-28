@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Siklus Hidup Romeow — Storyboard v1</title>
+<title>Siklus Hidup Romeow — Storyboard v2</title>
 <style>
   @font-face { font-family: "Fraunces"; src: url("assets/fonts/Fraunces-latin-var.woff2") format("woff2"); font-weight: 100 900; font-display: block; }
   @font-face { font-family: "Caveat"; src: url("assets/fonts/Caveat-latin-var.woff2") format("woff2"); font-weight: 400 700; font-display: block; }
@@ -55,6 +55,12 @@
   .bans { font-family: "Fraunces", serif; font-size: 15px; line-height: 1.6; margin-top: 12px; }
   .legend { font-size: 12px; color: var(--muted); margin-top: 18px; line-height: 1.6; }
 
+  .actor { font-family: "Fraunces", serif; font-size: 16px; line-height: 1.5; background: var(--paper); border-left: 6px solid var(--hi); padding: 14px 18px; border-radius: 8px; margin-bottom: 8px; }
+  .ghost-key { border: 2px dashed var(--grey-d); padding: 0 6px; border-radius: 4px; }
+  .ghost { opacity: 0.22; }
+  .frame.tilt svg { transform: perspective(1500px) rotateX(20deg) scale(0.9); transform-origin: 50% 62%; }
+  .changes { font-family: "Fraunces", serif; font-size: 15px; line-height: 1.5; margin: -12px 0 28px; color: #33405A; }
+  .changes b { color: var(--ink); }
   /* SVG text roles */
   .d { font-family: "Fraunces", serif; font-weight: 900; }
   .d7 { font-family: "Fraunces", serif; font-weight: 700; }
@@ -207,6 +213,43 @@
       </g>
     </g>
 
+    <g id="folio"><text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE</text></g>
+    <g id="track">
+      <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
+      <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
+      <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
+    </g>
+    <g id="overview">
+      <text class="m" x="540" y="330" font-size="34" fill="#2B4C7E" text-anchor="middle">BAB 3 · MAKHLUK HIDUP DI SEKITAR KITA</text>
+      <circle cx="540" cy="900" r="330" fill="none" stroke="#2B4C7E" stroke-width="7" />
+      <g fill="#2B4C7E">
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(683,603) rotate(25.7)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(862,826) rotate(77.1)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(798,1106) rotate(128.6)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(540,1230) rotate(180)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(282,1106) rotate(231.4)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(218,826) rotate(282.9)" />
+        <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(397,603) rotate(334.3)" />
+      </g>
+      <g filter="url(#cut)" stroke="#2B4C7E" stroke-width="5" fill="#FFFDF7">
+        <circle cx="798" cy="694" r="56" /><circle cx="862" cy="974" r="56" /><circle cx="683" cy="1197" r="56" />
+        <circle cx="397" cy="1197" r="56" /><circle cx="218" cy="974" r="56" /><circle cx="282" cy="694" r="56" />
+      </g>
+      <g class="d" font-size="54" fill="#2B4C7E" text-anchor="middle">
+        <text x="798" y="713">2</text><text x="862" y="993">3</text><text x="683" y="1216">4</text>
+        <text x="397" y="1216">5</text><text x="218" y="993">6</text><text x="282" y="713">7</text>
+      </g>
+      <g class="d7" font-size="36" fill="#2B4C7E" text-anchor="middle" stroke="#F6F1E7" stroke-width="12" paint-order="stroke" stroke-linejoin="round">
+        <text x="540" y="672">Hibernasi</text>
+        <text x="798" y="790">Peregangan</text><text x="862" y="1070">Alarm 05.00</text><text x="683" y="1293">Makan</text>
+        <text x="397" y="1293">Zoomies</text><text x="218" y="1070">Gravitasi</text><text x="282" y="790">Kardus</text>
+      </g>
+      <text class="d" x="540" y="860" font-size="72" fill="#2B4C7E" text-anchor="middle">Siklus Hidup</text>
+      <g filter="url(#cut)"><use href="#pose-sleep" transform="translate(431,470) scale(0.42)" /></g>
+      <circle cx="410" cy="540" r="40" fill="#2B4C7E" /><text class="d" x="410" y="558" font-size="50" fill="#F6F1E7" text-anchor="middle">1</text>
+      <text class="d7" x="540" y="1400" font-size="40" fill="#2B4C7E" text-anchor="middle" font-style="italic">Gambar 1.3 Siklus hidup Romeow.</text>
+      <text class="h" x="540" y="1462" font-size="48" fill="#2B4C7E" text-anchor="middle" opacity="0.85">catatan: fase ① paling lama</text>
+    </g>
     <!-- speed lines -->
     <path id="speed" d="M0,0 h220 M40,60 h300 M0,120 h180 M60,180 h260" stroke="#2B4C7E" stroke-width="10" stroke-linecap="round" opacity="0.35" />
     <!-- hand-drawn arrow -->
@@ -217,57 +260,34 @@
 <div class="wrap">
   <header>
     <div>
-      <h1>Siklus Hidup Romeow <span class="v">v1</span></h1>
-      <p class="dek">Parodi diagram "Siklus Air" buku IPA — hari seekor kucing abu-abu yang berulang tanpa henti. Buku pop-up 2.5D, motion typography, tanpa narasi.</p>
+      <h1>Siklus Hidup Romeow <span class="v">v2</span></h1>
+      <p class="dek">Parodi diagram "Siklus Air" buku IPA — hari seekor kucing abu-abu yang berulang tanpa henti. Buku pop-up 2.5D, Romeow sebagai satu aktor kontinu, transisi 3D, dan tipografi yang menyatu dengan Romeow. Tanpa narasi.</p>
     </div>
     <span class="tag">1080×1920 · 30 dtk · 9 FRAME · LOOP</span>
   </header>
+  <p class="changes"><b>Perubahan dari v1:</b> (1) Romeow adalah satu kucing yang sama dari frame ke frame, dan berpindah fase di dalam transisi. (2) Setiap sambungan adalah transisi 3D: kamera terbang di atas halaman pop-up, dan potongan kertas terlipat rebah lalu berdiri. (3) Tipografi tidak lagi berupa blok di atas, tapi menyatu dengan Romeow dan mengisi ruang kosong di sekitarnya.</p>
+
+  <div class="actor">
+    <b>Romeow = satu aktor.</b> Ukurannya sama di semua close-up dan ia selalu berpijak di rel panah (garis biru di bawah). Pose akhir di satu frame adalah pose awal di frame berikutnya, dan perpindahannya terjadi di dalam transisi 3D. <span class="ghost-key">Siluet putus-putus</span> = posisi Romeow saat masuk dari frame sebelumnya.
+  </div>
 
   <span class="act">Babak 1 — Buka halaman</span>
   <div class="grid">
 
     <!-- 01 -->
     <div class="cell" id="frame-01">
-      <div class="frame">
+      <div class="frame tilt">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 01 — Pembuka">
           <use href="#page" />
-          <text class="m" x="540" y="310" font-size="34" fill="#2B4C7E" text-anchor="middle">GAMBAR 1.3</text>
-          <text class="d" x="540" y="430" font-size="96" fill="#2B4C7E" text-anchor="middle">Siklus Hidup</text>
-          <rect x="262" y="478" width="556" height="112" fill="#F7D154" transform="rotate(-2 540 534)" />
-          <text class="d" x="540" y="570" font-size="140" fill="#2B4C7E" text-anchor="middle">Romeow</text>
-          <!-- cycle -->
-          <circle cx="540" cy="1040" r="330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <text class="d" x="540" y="1110" font-size="220" fill="#2B4C7E" opacity="0.1" text-anchor="middle">↻</text>
-          <g fill="#2B4C7E">
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(683,743) rotate(25.7)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(862,966) rotate(77.1)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(798,1246) rotate(128.6)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(540,1370) rotate(180)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(282,1246) rotate(231.4)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(218,966) rotate(282.9)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(397,743) rotate(334.3)" />
-          </g>
-          <g filter="url(#cut)" stroke="#2B4C7E" stroke-width="5" fill="#FFFDF7">
-            <circle cx="798" cy="834" r="56" /><circle cx="862" cy="1114" r="56" /><circle cx="683" cy="1337" r="56" />
-            <circle cx="397" cy="1337" r="56" /><circle cx="218" cy="1114" r="56" /><circle cx="282" cy="834" r="56" />
-          </g>
-          <g class="d" font-size="54" fill="#2B4C7E" text-anchor="middle">
-            <text x="798" y="853">2</text><text x="862" y="1133">3</text><text x="683" y="1356">4</text>
-            <text x="397" y="1356">5</text><text x="218" y="1133">6</text><text x="282" y="853">7</text>
-          </g>
-          <g class="d7" font-size="36" fill="#2B4C7E" text-anchor="middle" stroke="#F6F1E7" stroke-width="12" paint-order="stroke" stroke-linejoin="round">
-            <text x="540" y="840">Hibernasi</text>
-            <text x="798" y="930">Peregangan</text><text x="862" y="1210">Alarm 05.00</text><text x="683" y="1433">Makan</text>
-            <text x="397" y="1433">Zoomies</text><text x="218" y="1210">Gravitasi</text><text x="282" y="930">Kardus</text>
-          </g>
-          <g filter="url(#cut)"><use href="#pose-sleep" transform="translate(436,640) scale(0.4)" /></g>
-          <circle cx="410" cy="700" r="40" fill="#2B4C7E" /><text class="d" x="410" y="718" font-size="50" fill="#F6F1E7" text-anchor="middle">1</text>
+          <use href="#overview" />
+          <rect x="320" y="920" width="440" height="100" fill="#F7D154" transform="rotate(-2 540 970)" />
+          <text class="d" x="540" y="1000" font-size="112" fill="#2B4C7E" text-anchor="middle">Romeow</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>01 · PEMBUKA</span><span>01-pembuka · 0.0–3.0</span></div>
-      <p class="note"><b>Gerak pertama (0,2 dtk):</b> "Romeow" memantul lalu disapu stabilo kuning, nomor fase berdenyut bergiliran searah jarum jam. Di build, halaman ini miring sekitar 14° seperti buku di atas meja. <b>Kamera turun mendekat ke ①.</b> Frame ini sama persis dengan frame akhir.</p>
-      <span class="chip">SEAM → dorong kamera ke ①</span>
+      <p class="note"><b>Halaman dilihat dari sudut miring 3D</b> seperti buku di atas meja. Judul sekarang ada <b>di dalam lingkaran siklus</b>, tidak lagi di atas. "Romeow" memantul lalu disapu stabilo, dan keterangan gambar ala buku di bawah tertulis sendiri. Romeow tidur di atas ①. Frame ini sama persis dengan frame akhir.</p>
+      <span class="chip">SEAM → 3D dive ke ①</span>
     </div>
 
     <!-- 02 -->
@@ -275,30 +295,30 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 02 — Hibernasi Harian">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 1/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">1</text>
-          <text class="d" x="250" y="410" font-size="104" fill="#2B4C7E">Hibernasi</text>
-          <text class="d" x="250" y="520" font-size="104" fill="#2B4C7E">Harian</text>
-          <!-- spine arc -->
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 2</text>
-          <!-- zzz depth -->
-          <text class="d" x="720" y="760" font-size="120" fill="#2B4C7E" filter="url(#cut)">Z</text>
-          <text class="d" x="840" y="660" font-size="84" fill="#2B4C7E" opacity="0.8">z</text>
-          <text class="d" x="910" y="590" font-size="56" fill="#2B4C7E" opacity="0.55">z</text>
-          <g filter="url(#cut)"><use href="#pose-sleep" transform="translate(190,860) scale(1.3)" /></g>
-          <!-- note -->
-          <rect x="300" y="1414" width="300" height="56" fill="#F7D154" transform="rotate(-1.5 450 1442)" />
-          <text class="h" x="120" y="1460" font-size="72" fill="#2B4C7E">tidur 12–16 jam sehari</text>
-          <use href="#hand-arrow" transform="translate(880,1440) rotate(-10) scale(0.9)" />
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 1/7</text>
+          <use href="#track" /><text class="m" x="1000" y="1236" font-size="30" fill="#2B4C7E" text-anchor="end">→ 2</text>
+          <!-- fact grows out of the Z trail, filling the top space -->
+          <text class="h" x="110" y="470" font-size="76" fill="#2B4C7E">tidur</text>
+          <rect x="96" y="500" width="610" height="150" fill="#F7D154" transform="rotate(-2 400 575)" />
+          <text class="d" x="110" y="630" font-size="190" fill="#2B4C7E">12–16</text>
+          <text class="h" x="730" y="560" font-size="80" fill="#2B4C7E">jam</text>
+          <text class="h" x="730" y="640" font-size="80" fill="#2B4C7E">sehari</text>
+          <g class="d" fill="#2B4C7E">
+            <text x="300" y="920" font-size="60" opacity="0.5">z</text>
+            <text x="240" y="840" font-size="84" opacity="0.7">z</text>
+            <text x="170" y="750" font-size="110" filter="url(#cut)">Z</text>
+          </g>
+          <!-- title curls over the back like a blanket -->
+          <path id="p02" d="M370,1010 Q700,730 1030,1020" fill="none" />
+          <text class="d" font-size="80" fill="#2B4C7E"><textPath href="#p02" startOffset="50%" text-anchor="middle">Hibernasi Harian</textPath></text>
+          <g filter="url(#cut)"><use href="#pose-sleep" transform="translate(190,886) scale(1.2)" /></g>
+          <text class="h" x="110" y="1440" font-size="56" fill="#2B4C7E" opacity="0.85">fase terpanjang — ekor jadi selimut</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>02 · ① HIBERNASI HARIAN</span><span>02-hibernasi · 3.0–6.5</span></div>
-      <p class="note"><b>Napas Romeow naik turun lebih dulu,</b> lalu label muncul memantul huruf per huruf. Huruf "z" kertas melayang ke atas di kedalaman berbeda (parallax). Catatan tertulis, lalu "12–16 jam" disapu stabilo. <b>Stabilo panah</b> berjalan menuju ②.</p>
-      <span class="chip">SEAM → geser kamera ↻</span>
+      <p class="note"><b>"Hibernasi Harian" melengkung di atas punggung Romeow seperti selimut</b> dan naik turun mengikuti napasnya. Huruf Z keluar dari hidungnya, makin besar, lalu berubah menjadi <b>"12–16 jam sehari"</b> yang mengisi ruang kosong di atas.</p>
+      <span class="chip">SEAM → 3D orbit glide, Romeow bangun</span>
     </div>
 
     <!-- 03 -->
@@ -306,25 +326,26 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 03 — Peregangan Ekstrem">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 2/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">2</text>
-          <text class="d" x="250" y="450" font-size="104" fill="#2B4C7E">Peregangan</text>
-          <!-- stretched word -->
-          <rect x="84" y="530" width="912" height="130" fill="#F7D154" transform="rotate(-1 540 595)" />
-          <text class="d" x="540" y="640" font-size="130" fill="#2B4C7E" text-anchor="middle" transform="translate(540 0) scale(1.55 1) translate(-540 0)">EKSTREM</text>
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 3</text>
-          <g filter="url(#cut)"><use href="#pose-stretch" transform="translate(120,880) scale(1.1)" /></g>
-          <text class="m" x="540" y="820" font-size="28" fill="#2B4C7E" text-anchor="middle" opacity="0.7">|←—— 1.6× ——→|</text>
-          <text class="h" x="120" y="1460" font-size="64" fill="#2B4C7E">melancarkan aliran darah</text>
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 2/7</text>
+          <use href="#track" /><text class="m" x="1000" y="1236" font-size="30" fill="#2B4C7E" text-anchor="end">→ 3</text>
+          <!-- entry ghost: where Romeow woke up -->
+          <use href="#pose-sleep" transform="translate(40,1070) scale(0.55)" class="ghost" />
+          <!-- words run parallel to the stretched back -->
+          <g transform="rotate(-11 540 800)">
+            <text class="d" x="120" y="620" font-size="104" fill="#2B4C7E">Peregangan</text>
+            <rect x="96" y="660" width="900" height="150" fill="#F7D154" />
+            <text class="d" x="546" y="790" font-size="150" fill="#2B4C7E" text-anchor="middle" transform="translate(546 0) scale(1.5 1) translate(-546 0)">EKSTREM</text>
+            <text class="m" x="546" y="870" font-size="28" fill="#2B4C7E" text-anchor="middle" opacity="0.7">|←——— 1.6× ———→|</text>
+          </g>
+          <g filter="url(#cut)"><use href="#pose-stretch" transform="translate(70,908) scale(1.2)" /></g>
+          <!-- fact tucked under the belly arch -->
+          <text class="h" x="110" y="1440" font-size="60" fill="#2B4C7E">melancarkan aliran darah</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>03 · ② PEREGANGAN EKSTREM</span><span>03-peregangan · 6.5–9.5</span></div>
-      <p class="note"><b>Badan Romeow dan kata "EKSTREM" meregang bersamaan</b> (maksimal 1,6×), lalu kembali dengan pantulan pegas. Romeow menguap lebar. Sketsa ini menampilkan puncak regangan.</p>
-      <span class="chip">SEAM → geser kamera ↻</span>
+      <p class="note"><b>Romeow yang tadi tidur bangun di tempat yang sama</b> (siluet putus-putus) lalu meregang diagonal. <b>"Peregangan" dan "EKSTREM" sejajar garis punggungnya</b> dan ikut meregang maksimal 1,6×. Fakta diselipkan di ruang kosong di bawah perutnya.</p>
+      <span class="chip">SEAM → 3D hop</span>
     </div>
   </div>
 
@@ -336,41 +357,41 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 04 — Alarm 05.00">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 3/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">3</text>
-          <text class="d" x="250" y="410" font-size="104" fill="#2B4C7E">Alarm Jam</text>
-          <text class="m" x="250" y="530" font-size="110" fill="#2B4C7E" letter-spacing="0">05.00</text>
-          <!-- clock -->
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 3/7</text>
+          <use href="#track" /><text class="m" x="1000" y="1236" font-size="30" fill="#2B4C7E" text-anchor="end">→ 4</text>
+          <use href="#pose-stretch" transform="translate(-60,1120) scale(0.45)" class="ghost" />
+          <!-- clock carries its own words -->
           <g filter="url(#cut)">
-            <circle cx="850" cy="480" r="96" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="8" />
-            <path d="M850,480 V410 M850,480 L808,508" stroke="#2B4C7E" stroke-width="10" stroke-linecap="round" />
+            <circle cx="850" cy="450" r="130" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="9" />
+            <text class="m" x="850" y="476" font-size="72" fill="#2B4C7E" text-anchor="middle" letter-spacing="0">05.00</text>
+            <path d="M850,334 v22 M850,544 v22 M734,450 h22 M944,450 h22" stroke="#2B4C7E" stroke-width="7" stroke-linecap="round" />
           </g>
-          <!-- MEOW bubble -->
-          <g filter="url(#cut)" transform="rotate(-6 640 760)">
-            <path d="M330,640 H960 Q1000,640 1000,680 V840 Q1000,880 960,880 H620 L560,960 L566,880 H330 Q290,880 290,840 V680 Q290,640 330,640 Z" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="8" />
-            <text class="d" x="645" y="815" font-size="190" fill="#2B4C7E" text-anchor="middle">MEOW!</text>
+          <path id="p04" d="M685,450 A165,165 0 0 1 1015,450" fill="none" />
+          <text class="d" font-size="50" fill="#2B4C7E" letter-spacing="5"><textPath href="#p04" startOffset="50%" text-anchor="middle">ALARM JAM</textPath></text>
+          <!-- MEOW x3 bursting out of the mouth toward the clock -->
+          <g class="d" fill="#2B4C7E">
+            <text x="470" y="1010" font-size="60" transform="rotate(-22 470 1010)" opacity="0.55">meow</text>
+            <text x="520" y="930" font-size="96" transform="rotate(-18 520 930)" opacity="0.8">MEOW</text>
           </g>
-          <g stroke="#2B4C7E" stroke-width="7" stroke-linecap="round" opacity="0.6"><path d="M1010,660 l40,-30 M1020,760 h50 M1010,860 l40,30" /></g>
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 4</text>
-          <!-- pillow (the victim) -->
+          <g filter="url(#cut)" transform="rotate(-12 430 700)">
+            <rect x="90" y="610" width="680" height="170" rx="24" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="8" />
+            <text class="d" x="430" y="750" font-size="160" fill="#2B4C7E" text-anchor="middle">MEOW!</text>
+          </g>
           <g filter="url(#cut)">
-            <rect x="640" y="1040" width="280" height="120" rx="50" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
-            <path d="M650,1030 l-20,-20 M930,1030 l20,-20 M780,1020 v-26" stroke="#2B4C7E" stroke-width="6" stroke-linecap="round" />
+            <rect x="660" y="1100" width="280" height="110" rx="50" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
+            <path d="M670,1090 l-20,-20 M950,1090 l20,-20 M800,1080 v-26" stroke="#2B4C7E" stroke-width="6" stroke-linecap="round" />
           </g>
-          <g filter="url(#cut)" transform="translate(170,900) scale(1)">
+          <g filter="url(#cut)" transform="translate(110,771) scale(1.2)">
             <use href="#pose-sit-body" />
-            <g transform="translate(50,30)"><use href="#rm-head" /><use href="#rm-eyes-open" /><use href="#rm-meow" /></g>
+            <g transform="translate(50,30) rotate(-10 100 100)"><use href="#rm-head" /><use href="#rm-eyes-open" /><use href="#rm-meow" /></g>
           </g>
-          <text class="h" x="120" y="1460" font-size="64" fill="#2B4C7E">aktif saat fajar &amp; senja</text>
+          <text class="h" x="110" y="1440" font-size="60" fill="#2B4C7E">paling aktif saat fajar &amp; senja</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>04 · ③ ALARM 05.00</span><span>04-alarm · 9.5–13.0</span></div>
-      <p class="note"><b>Angka "05.00" bergulir lebih dulu</b> seperti mesin slot. "MEOW!" muncul tiga kali, makin besar dan bergetar setiap kali. Bantal kertas (korbannya) ikut bergetar. Sketsa menampilkan MEOW ketiga, yang terbesar.</p>
-      <span class="chip">SEAM → geser kamera ↻</span>
+      <p class="note"><b>Tiga "MEOW" menyembur dari mulut Romeow</b>, setiap kali lebih besar dan lebih dekat ke kamera (bergerak di sumbu Z), ke arah jam. <b>"05.00" ada di muka jam</b> dan "ALARM JAM" melingkari bingkainya. Bantal kertas bergetar.</p>
+      <span class="chip">SEAM → 3D whip orbit</span>
     </div>
 
     <!-- 05 -->
@@ -378,33 +399,34 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 05 — Makan 3 Suap">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 4/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">4</text>
-          <text class="d" x="250" y="410" font-size="104" fill="#2B4C7E">Makan</text>
-          <text class="d" x="250" y="520" font-size="104" fill="#2B4C7E">3 Suap</text>
-          <text class="h" x="700" y="720" font-size="60" fill="#2B4C7E" transform="rotate(-8 760 700)">kriuk ×3</text>
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 5</text>
-          <g filter="url(#cut)" transform="translate(130,780)">
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 4/7</text>
+          <use href="#track" /><text class="m" x="1000" y="1236" font-size="30" fill="#2B4C7E" text-anchor="end">→ 5</text>
+          <!-- giant 3 = back pop-up layer -->
+          <text class="d" x="450" y="1230" font-size="980" fill="#F7D154" text-anchor="middle" filter="url(#cut)">3</text>
+          <text class="d" x="110" y="470" font-size="120" fill="#2B4C7E">Makan</text>
+          <text class="d" x="730" y="760" font-size="120" fill="#2B4C7E">Suap</text>
+          <g class="h" fill="#2B4C7E" font-size="56">
+            <text x="700" y="1000" transform="rotate(-18 700 1000)">k</text><text x="750" y="960" transform="rotate(10 750 960)">r</text>
+            <text x="800" y="990" transform="rotate(-6 800 990)">i</text><text x="840" y="950" transform="rotate(16 840 950)">u</text>
+            <text x="890" y="985" transform="rotate(-12 890 985)">k</text>
+          </g>
+          <g filter="url(#cut)" transform="translate(120,771) scale(1.2)">
             <use href="#pose-sit-body" />
             <g transform="translate(60,70) rotate(12 100 100)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
           </g>
-          <!-- bowl -->
           <g filter="url(#cut)">
-            <path d="M520,1100 H960 L920,1240 H560 Z" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="7" stroke-linejoin="round" />
-            <path d="M540,1100 q40,-50 80,-10 q30,-50 70,-6 q30,-48 70,-4 q40,-46 80,-2 q40,-40 70,22" fill="#C99E6B" />
+            <path d="M540,1090 H960 L925,1230 H575 Z" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="7" stroke-linejoin="round" />
+            <path d="M560,1090 q40,-50 80,-10 q30,-50 70,-6 q30,-48 70,-4 q40,-46 80,-2 q40,-40 60,22" fill="#C99E6B" />
           </g>
-          <text class="m" x="740" y="1200" font-size="44" fill="#2B4C7E" text-anchor="middle" letter-spacing="1">sisa: 97%</text>
-          <ellipse cx="740" cy="1186" rx="170" ry="52" fill="none" stroke="#2B4C7E" stroke-width="5" transform="rotate(-4 740 1186)" />
-          <text class="h" x="120" y="1460" font-size="62" fill="#2B4C7E">porsi kecil, tapi sering</text>
+          <text class="m" x="750" y="1188" font-size="44" fill="#2B4C7E" text-anchor="middle" letter-spacing="1">sisa: 97%</text>
+          <ellipse cx="750" cy="1174" rx="165" ry="50" fill="none" stroke="#2B4C7E" stroke-width="5" transform="rotate(-4 750 1174)" />
+          <text class="h" x="110" y="1440" font-size="60" fill="#2B4C7E">porsi kecil, tapi sering</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>05 · ④ MAKAN 3 SUAP</span><span>05-makan · 13.0–16.5</span></div>
-      <p class="note"><b>Setiap kunyahan membuat angka turun:</b> 100 → 99 → 98 → <b>97%</b>. Romeow lalu berbalik pergi dengan ekor terangkat, dan "sisa: 97%" dilingkari tulisan tangan. Punchline-nya ada di angka itu, jadi angka dibuat besar dan mono.</p>
-      <span class="chip">SEAM → geser kamera ↻ (makin cepat)</span>
+      <p class="note"><b>Angka "3" raksasa kuning berdiri di belakang Romeow</b> sebagai lapisan pop-up paling belakang, sehingga kedalamannya terasa. "Makan" dan "Suap" mengapit angka itu. Setiap kunyahan melempar huruf "k-r-i-u-k" dari mangkuk, dan angka turun 100 → <b>97%</b>.</p>
+      <span class="chip">SEAM → 3D spin (zoomies)</span>
     </div>
 
     <!-- 06 -->
@@ -412,27 +434,31 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 06 — Zoomies">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 5/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">5</text>
-          <g transform="rotate(-7 540 560)">
-            <rect x="60" y="440" width="960" height="210" fill="#F7D154" />
-            <text class="d" x="540" y="615" font-size="210" fill="#2B4C7E" text-anchor="middle" font-style="italic" transform="skewX(-12) translate(120 0)">ZOOMIES</text>
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 5/7</text>
+          <g transform="rotate(-9 540 1000)">
+            <use href="#track" />
+            <!-- ZOOMIES = the run trail -->
+            <g class="d" fill="#2B4C7E" font-style="italic">
+              <text x="-10" y="1190" font-size="150" opacity="0.18" transform="translate(-10 1190) scale(1.9 1) translate(10 -1190)">Z</text>
+              <text x="110" y="1165" font-size="160" opacity="0.3" transform="translate(110 1165) scale(1.7 1) translate(-110 -1165)">O</text>
+              <text x="250" y="1145" font-size="170" opacity="0.45" transform="translate(250 1145) scale(1.5 1) translate(-250 -1145)">O</text>
+              <text x="380" y="1130" font-size="180" opacity="0.6" transform="translate(380 1130) scale(1.35 1) translate(-380 -1130)">M</text>
+              <text x="530" y="1122" font-size="190" opacity="0.75" transform="translate(530 1122) scale(1.2 1) translate(-530 -1122)">I</text>
+              <text x="590" y="1122" font-size="200" opacity="0.9">E</text>
+              <text x="700" y="1126" font-size="210">S</text>
+            </g>
+            <rect x="80" y="560" width="760" height="120" fill="#F7D154" />
+            <text class="h" x="110" y="650" font-size="84" fill="#2B4C7E">melepas energi berlebih!</text>
+            <g filter="url(#cut)"><use href="#pose-run" transform="translate(300,760) scale(0.95)" /></g>
+            <use href="#speed" transform="translate(120,780) scale(0.9)" />
           </g>
-          <g transform="rotate(-8 540 1060)">
-            <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="760 2000" />
-            <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-            <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-            <use href="#speed" transform="translate(-20,960)" />
-            <g filter="url(#cut)"><use href="#pose-run" transform="translate(250,860) scale(1.05)" /></g>
-          </g>
-          <text class="m" x="1000" y="1250" font-size="30" fill="#2B4C7E" text-anchor="end">→ 6</text>
-          <text class="h" x="120" y="1460" font-size="62" fill="#2B4C7E">melepas energi berlebih</text>
+          <text class="m" x="1000" y="1400" font-size="30" fill="#2B4C7E" text-anchor="end">→ 6</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>06 · ⑤ ZOOMIES</span><span>06-zoomies · 16.5–20.0</span></div>
-      <p class="note"><b>Satu-satunya fase dengan kamera cepat:</b> Romeow melesat mengikuti panah dengan motion blur, dan seluruh halaman ikut miring −8°. Ia berhenti mendadak, lalu <b>"ZOOMIES" menghantam masuk dari samping.</b> Kamera berputar maksimal sekali, tanpa flash.</p>
-      <span class="chip">SEAM → rem mendadak, geser ↻</span>
+      <p class="note"><b>Huruf Z-O-O-M-I-E-S adalah jejak lari Romeow</b>, tertinggal di sepanjang rel dan makin pudar serta meregang ke belakang seperti motion blur. Halaman miring 3D (−9°) dan kamera berputar mengelilingi pusat lingkaran. Romeow lalu berhenti mendadak.</p>
+      <span class="chip">SEAM → 3D crash-low (rem)</span>
     </div>
   </div>
 
@@ -444,40 +470,45 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 07 — Eksperimen Gravitasi">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 6/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">6</text>
-          <text class="d" x="250" y="410" font-size="104" fill="#2B4C7E">Eksperimen</text>
-          <text class="d" x="250" y="520" font-size="104" fill="#2B4C7E">Gravitasi</text>
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 7</text>
-          <!-- table -->
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 6/7</text>
+          <use href="#track" />
+          <text class="d" x="110" y="480" font-size="120" fill="#2B4C7E">Eksperimen</text>
+          <text class="h" x="120" y="570" font-size="60" fill="#2B4C7E">naluri pemburu: “ini hidup?”</text>
+          <use href="#hand-arrow" transform="translate(700,640) rotate(20) scale(1.1)" />
           <g filter="url(#cut)">
-            <rect x="560" y="880" width="420" height="40" rx="8" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="7" />
-            <rect x="600" y="920" width="26" height="290" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
-            <rect x="914" y="920" width="26" height="290" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
+            <rect x="540" y="860" width="400" height="40" rx="8" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="7" />
+            <rect x="580" y="900" width="26" height="330" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
+            <rect x="874" y="900" width="26" height="330" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" />
           </g>
-          <!-- glass falling path -->
-          <path d="M1010,860 q60,80 30,300" fill="none" stroke="#2B4C7E" stroke-width="5" stroke-dasharray="4 16" stroke-linecap="round" />
-          <g filter="url(#cut)" transform="rotate(24 1000 820)">
-            <path d="M960,760 h80 l-10,120 h-60 Z" fill="#DCE6F2" stroke="#2B4C7E" stroke-width="6" stroke-linejoin="round" />
+          <g filter="url(#cut)" transform="rotate(24 960 800)">
+            <path d="M920,740 h80 l-10,120 h-60 Z" fill="#DCE6F2" stroke="#2B4C7E" stroke-width="6" stroke-linejoin="round" />
           </g>
-          <text class="h" x="840" y="1170" font-size="66" fill="#2B4C7E" transform="rotate(-8 900 1150)">tink!</text>
-          <g filter="url(#cut)" transform="translate(150,800)">
+          <!-- GRAVITASI tumbles down the fall line -->
+          <g class="d" fill="#2B4C7E" font-size="62" text-anchor="middle">
+            <text x="950" y="930" transform="rotate(12 950 930)">G</text>
+            <text x="960" y="985" transform="rotate(34 960 985)">R</text>
+            <text x="966" y="1040" transform="rotate(58 966 1040)">A</text>
+            <text x="970" y="1095" transform="rotate(86 970 1095)">V</text>
+            <text x="972" y="1146" transform="rotate(112 972 1146)">I</text>
+            <text x="970" y="1198" transform="rotate(140 970 1198)">T</text>
+            <text x="964" y="1250" transform="rotate(170 964 1250)">A</text>
+            <text x="950" y="1300" transform="rotate(196 950 1300)">S</text>
+            <text x="932" y="1346" transform="rotate(224 932 1346)">I</text>
+          </g>
+          <text class="h" x="780" y="1390" font-size="66" fill="#2B4C7E" transform="rotate(-8 830 1370)">tink!</text>
+          <g filter="url(#cut)" transform="translate(90,771) scale(1.2)">
             <use href="#pose-sit-body" />
-            <rect x="190" y="220" width="250" height="38" rx="19" fill="#8A9099" transform="rotate(-10 190 240)" />
-            <ellipse cx="436" cy="196" rx="26" ry="16" fill="#F7F7F5" />
+            <rect x="190" y="200" width="230" height="38" rx="19" fill="#8A9099" transform="rotate(-8 190 220)" />
+            <ellipse cx="416" cy="184" rx="26" ry="16" fill="#F7F7F5" />
             <g transform="translate(50,30)"><use href="#rm-head" /><use href="#rm-eyes-wide" /><use href="#rm-smile" /></g>
           </g>
-          <text class="m" x="540" y="700" font-size="26" fill="#B04A4A" text-anchor="middle" opacity="0.8">[ FRAME DIAM 0.8 dtk ]</text>
-          <text class="h" x="120" y="1460" font-size="58" fill="#2B4C7E">naluri pemburu: “ini hidup?”</text>
+          <text class="m" x="110" y="720" font-size="26" fill="#B04A4A" opacity="0.8">[ FRAME DIAM 0.8 dtk ]</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>07 · ⑥ EKSPERIMEN GRAVITASI</span><span>07-gravitasi · 20.0–23.5</span></div>
-      <p class="note"><b>Kaki Romeow mendorong gelas sedikit demi sedikit</b> (lambat, cepat, lambat) sambil matanya menatap lurus ke kamera. Latar belakang dibuat blur supaya fokus ke mata. Gelas jatuh, "tink!", lalu <b>frame diam 0,8 detik.</b> Label muncul setelah hening.</p>
-      <span class="chip">SEAM → geser kamera ↻</span>
+      <p class="note"><b>Kamera turun ke sudut rendah, sejajar mata Romeow.</b> Ia mendorong gelas pelan-pelan sambil menatap kamera. Gelas jatuh, dan <b>huruf G-R-A-V-I-T-A-S-I ikut jatuh berputar</b> di lintasan yang sama, lalu "tink!". Setelah itu frame diam 0,8 detik. "Eksperimen" dan fakta mengisi ruang kosong di atas.</p>
+      <span class="chip">SEAM → 3D tilt-follow (ikut gelas jatuh)</span>
     </div>
 
     <!-- 08 -->
@@ -485,78 +516,48 @@
       <div class="frame">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 08 — Masuk Kardus">
           <use href="#page" />
-          <text class="m" x="100" y="300" font-size="32" fill="#2B4C7E">GBR. 1.3 · FASE 7/7</text>
-          <circle cx="160" cy="420" r="62" fill="#2B4C7E" /><text class="d" x="160" y="444" font-size="70" fill="#F6F1E7" text-anchor="middle">7</text>
-          <text class="d" x="250" y="410" font-size="104" fill="#2B4C7E">Masuk</text>
-          <text class="d" x="250" y="520" font-size="104" fill="#2B4C7E">Kardus</text>
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#F7D154" stroke-width="34" stroke-linecap="round" stroke-dasharray="560 2000" />
-          <path d="M-60,1330 Q540,1190 1140,1330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <path d="M-24,-20 L24,0 L-24,20 Z" fill="#2B4C7E" transform="translate(1010,1296) rotate(18)" />
-          <text class="m" x="1000" y="1240" font-size="30" fill="#2B4C7E" text-anchor="end">→ 1</text>
-          <g filter="url(#cut)">
-            <!-- back flap -->
-            <path d="M360,960 L420,880 H700 L740,960 Z" fill="#B88A58" />
-            <!-- tail sticking out -->
-            <use href="#rm-tail" transform="translate(700,960) rotate(-40) scale(1.7,1.3)" />
-            <!-- head -->
-            <g transform="translate(410,740) scale(1.3)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
-            <!-- fluff overflow -->
-            <path d="M350,980 l-30,-34 l44,6 l-10,-40 l40,30 l10,-30 l22,40 Z M760,980 l30,-34 l-44,6 l10,-40 l-40,30 l-10,-30 l-22,40 Z" fill="#8A9099" />
-            <!-- box front -->
-            <rect x="360" y="960" width="380" height="250" fill="#C99E6B" stroke="#8E6A40" stroke-width="6" />
-            <path d="M360,960 L290,1040 M740,960 L810,1040" stroke="#8E6A40" stroke-width="6" />
-            <path d="M360,960 L300,1040 H360 Z M740,960 L800,1040 H740 Z" fill="#B88A58" />
-            <text class="m" x="550" y="1110" font-size="34" fill="#8E6A40" text-anchor="middle" letter-spacing="2">KECIL</text>
+          <text class="m" x="100" y="300" font-size="30" fill="#2B4C7E">GBR. 1.3 · FASE 7/7</text>
+          <use href="#track" /><text class="m" x="1000" y="1236" font-size="30" fill="#2B4C7E" text-anchor="end">→ 1</text>
+          <text class="h" x="200" y="560" font-size="90" fill="#2B4C7E">masuk</text>
+          <path d="M330,590 C360,660 390,700 440,730 M420,700 l24,32 l-38,6" stroke="#2B4C7E" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round" />
+          <!-- hanging tag with the fact -->
+          <path d="M800,1000 L860,640" stroke="#2B4C7E" stroke-width="4" />
+          <g filter="url(#cut)" transform="rotate(8 860 600)">
+            <path d="M700,470 H990 V690 H700 L660,580 Z" fill="#FFFDF7" stroke="#2B4C7E" stroke-width="6" stroke-linejoin="round" />
+            <text class="h" x="840" y="555" font-size="54" fill="#2B4C7E" text-anchor="middle">ruang sempit</text>
+            <text class="h" x="840" y="630" font-size="54" fill="#2B4C7E" text-anchor="middle">= merasa aman</text>
           </g>
-          <text class="h" x="120" y="1460" font-size="62" fill="#2B4C7E">ruang sempit = merasa aman</text>
+          <g filter="url(#cut)">
+            <path d="M320,1000 L380,910 H720 L770,1000 Z" fill="#B88A58" />
+            <use href="#rm-tail" transform="translate(720,1000) rotate(-42) scale(1.7,1.4)" />
+            <g transform="translate(420,760) scale(1.2)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
+            <path d="M310,1020 l-34,-34 l46,6 l-10,-42 l42,32 l10,-32 l22,42 Z M780,1020 l34,-34 l-46,6 l10,-42 l-42,32 l-10,-32 l-22,42 Z" fill="#8A9099" />
+            <rect x="320" y="1000" width="450" height="250" fill="#C99E6B" stroke="#8E6A40" stroke-width="6" />
+            <path d="M320,1000 L250,1080 H320 Z M770,1000 L840,1080 H770 Z" fill="#B88A58" />
+            <text class="d" x="545" y="1140" font-size="104" fill="#8E6A40" text-anchor="middle" letter-spacing="2">KARDUS</text>
+            <text class="m" x="545" y="1200" font-size="28" fill="#8E6A40" text-anchor="middle" letter-spacing="0">ISI: 1 KUCING (KEBESARAN)</text>
+          </g>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>08 · ⑦ MASUK KARDUS</span><span>08-kardus · 23.5–27.0</span></div>
-      <p class="note"><b>Romeow melompat masuk dan kardusnya melentur</b> seperti pegas. Surai dan ekornya menyembul keluar dan kepalanya tampak puas. Kardus harus jelas lebih kecil dari Romeow. Panah stabilo menunjuk kembali ke ①.</p>
-      <span class="chip">SEAM → kamera mundur</span>
+      <p class="note"><b>Kamera mengikuti gelas yang jatuh dan mendarat di kardus.</b> Romeow melompat masuk dan kardusnya melentur. <b>"KARDUS" tercetak di muka kardus</b> seperti cap pengiriman, dan "masuk" ditulis tangan dengan panah ke dalam. Fakta ada di label gantung.</p>
+      <span class="chip">SEAM → 3D pull-up</span>
     </div>
 
     <!-- 09 -->
     <div class="cell" id="frame-09">
-      <div class="frame">
+      <div class="frame tilt">
         <svg viewBox="0 0 1080 1920" role="img" aria-label="Frame 09 — Penutup">
           <use href="#page" />
-          <text class="m" x="540" y="310" font-size="34" fill="#2B4C7E" text-anchor="middle">GAMBAR 1.3</text>
-          <text class="d" x="540" y="430" font-size="96" fill="#2B4C7E" text-anchor="middle">Siklus Hidup</text>
-          <text class="d" x="540" y="570" font-size="140" fill="#2B4C7E" text-anchor="middle">Romeow</text>
-          <circle cx="540" cy="1040" r="330" fill="none" stroke="#F7D154" stroke-width="36" opacity="0.9" />
-          <circle cx="540" cy="1040" r="330" fill="none" stroke="#2B4C7E" stroke-width="7" />
-          <text class="d" x="540" y="1110" font-size="220" fill="#2B4C7E" opacity="0.1" text-anchor="middle">↻</text>
-          <g fill="#2B4C7E">
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(683,743) rotate(25.7)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(862,966) rotate(77.1)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(798,1246) rotate(128.6)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(540,1370) rotate(180)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(282,1246) rotate(231.4)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(218,966) rotate(282.9)" />
-            <path d="M-22,-18 L22,0 L-22,18 Z" transform="translate(397,743) rotate(334.3)" />
-          </g>
-          <g filter="url(#cut)" stroke="#2B4C7E" stroke-width="5" fill="#FFFDF7">
-            <circle cx="798" cy="834" r="56" /><circle cx="862" cy="1114" r="56" /><circle cx="683" cy="1337" r="56" />
-            <circle cx="397" cy="1337" r="56" /><circle cx="218" cy="1114" r="56" /><circle cx="282" cy="834" r="56" />
-          </g>
-          <g class="d" font-size="54" fill="#2B4C7E" text-anchor="middle">
-            <text x="798" y="853">2</text><text x="862" y="1133">3</text><text x="683" y="1356">4</text>
-            <text x="397" y="1356">5</text><text x="218" y="1133">6</text><text x="282" y="853">7</text>
-          </g>
-          <g class="d7" font-size="36" fill="#2B4C7E" text-anchor="middle" stroke="#F6F1E7" stroke-width="12" paint-order="stroke" stroke-linejoin="round">
-            <text x="540" y="840">Hibernasi</text>
-            <text x="798" y="930">Peregangan</text><text x="862" y="1210">Alarm 05.00</text><text x="683" y="1433">Makan</text>
-            <text x="397" y="1433">Zoomies</text><text x="218" y="1210">Gravitasi</text><text x="282" y="930">Kardus</text>
-          </g>
-          <g filter="url(#cut)"><use href="#pose-sleep" transform="translate(436,640) scale(0.4)" /></g>
-          <circle cx="410" cy="700" r="40" fill="#2B4C7E" /><text class="d" x="410" y="718" font-size="50" fill="#F6F1E7" text-anchor="middle">1</text>
+          <circle cx="540" cy="900" r="330" fill="none" stroke="#F7D154" stroke-width="36" opacity="0.9" />
+          <use href="#overview" />
+          <text class="d" x="540" y="1000" font-size="112" fill="#2B4C7E" text-anchor="middle">Romeow</text>
           <use href="#keepout" />
         </svg>
       </div>
       <div class="lbl"><span>09 · PENUTUP → ①</span><span>09-penutup · 27.0–30.0</span></div>
-      <p class="note"><b>Kamera mundur ke halaman penuh.</b> Stabilo menyapu potongan panah terakhir sehingga lingkaran lengkap (seperti di sketsa ini), lalu memudar. Romeow meringkuk lagi di ①. <b>Di detik 30,0 semuanya kembali persis seperti Frame 01</b>, jadi video bisa diputar berulang tanpa sambungan.</p>
+      <p class="note"><b>Kamera naik dan miring kembali ke pandangan 3D penuh.</b> Romeow keluar dari kardus, berjalan di rel ke ①, lalu meringkuk. Stabilo menutup lingkaran (seperti di sketsa ini) lalu memudar, dan stabilo di "Romeow" muncul kembali. <b>Di detik 30,0 semuanya sama persis dengan Frame 01.</b></p>
       <span class="chip">SEAM → LOOP ke 01</span>
     </div>
   </div>
@@ -565,18 +566,18 @@
     <div class="panel">
       <h2>Peta sambungan (seam)</h2>
       <div class="seams">
-        <span class="f">01</span><span class="s">dorong ↓</span>
-        <span class="f">02</span><span class="s">geser ↻</span>
-        <span class="f">03</span><span class="s">geser ↻</span>
-        <span class="f">04</span><span class="s">geser ↻</span>
-        <span class="f">05</span><span class="s">geser ↻ cepat</span>
-        <span class="f">06</span><span class="s">rem, geser ↻</span>
-        <span class="f">07</span><span class="s">geser ↻</span>
-        <span class="f">08</span><span class="s">mundur ↑</span>
+        <span class="f">01</span><span class="s">3D dive ↓</span>
+        <span class="f">02</span><span class="s">3D orbit glide ↻</span>
+        <span class="f">03</span><span class="s">3D hop ⤴</span>
+        <span class="f">04</span><span class="s">3D whip orbit ↻</span>
+        <span class="f">05</span><span class="s">3D spin ⟳</span>
+        <span class="f">06</span><span class="s">3D crash-low ↘</span>
+        <span class="f">07</span><span class="s">3D tilt-follow ↓</span>
+        <span class="f">08</span><span class="s">3D pull-up ↑</span>
         <span class="f">09</span><span class="s">=</span>
         <span class="f loop">01 ↻</span>
       </div>
-      <p class="legend">Satu dunia pop-up, satu kamera, dan semua gerak searah jarum jam mengikuti panah. Tidak ada potongan keras kecuali ke frame diam di 07. Tiap frame adalah klip terpisah di timeline Studio. Gerak kamera masuk ada di 0,6 detik pertama tiap klip, jadi durasi klip bisa digeser tanpa merusak sambungan.<br /><span style="color:#B04A4A">Garis putus-putus merah</span> di sketsa = batas area UI Reels/TikTok (atas 12%, bawah 20%). Garis ini tidak muncul di video.</p>
+      <p class="legend">Satu dunia pop-up, satu kamera perspektif, dan satu Romeow. Setiap sambungan adalah penerbangan kamera 3D (rotateX/rotateY/translateZ, parallax antar-lapis, blur kedalaman). Potongan kertas fase lama <b>terlipat rebah</b> ke halaman, potongan fase baru <b>berdiri</b>, dan Romeow berjalan, melompat, atau berlari di rel ke fase berikutnya selama penerbangan itu. Semua arah searah jarum jam.<br />Timing: tiap fase adalah klip di timeline Studio, dan kamera serta perjalanan Romeow dihitung dari batas klip. Menggeser klip berarti ikut menggeser transisinya.<br /><span style="color:#B04A4A">Garis putus-putus merah</span> = batas area UI Reels/TikTok (tidak muncul di video).</p>
     </div>
     <div class="panel">
       <h2>Token desain</h2>
