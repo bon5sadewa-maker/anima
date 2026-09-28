@@ -1,0 +1,34 @@
+{
+  "version": 1,
+  "preferences": {
+    "destination": {
+      "value": "reels-tiktok-shorts",
+      "confirmed_in": [
+        "romeow-cycle"
+      ],
+      "updated_at": "2026-09-28T02:01:08.165Z"
+    },
+    "aspect": {
+      "value": "1080x1920",
+      "confirmed_in": [
+        "romeow-cycle"
+      ],
+      "updated_at": "2026-09-28T02:01:08.213Z"
+    },
+    "flow": {
+      "value": "companion",
+      "confirmed_in": [
+        "romeow-cycle"
+      ],
+      "updated_at": "2026-09-28T02:01:08.265Z"
+    },
+    "storyboard": {
+      "value": "yes",
+      "confirmed_in": [
+        "romeow-cycle"
+      ],
+      "updated_at": "2026-09-28T02:01:08.312Z"
+    }
+  },
+  "sightings": {}
+}
