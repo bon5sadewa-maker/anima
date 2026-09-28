@@ -133,28 +133,28 @@
         }
       </style>
 
-      <div id="world-root" data-composition-id="world" data-width="1080" data-height="1920" data-layout-allow-overflow="">
-        <svg width="0" height="0" style="position: absolute" aria-hidden="true">
-          <defs>
-            <filter id="w-cut" x="-20%" y="-20%" width="140%" height="140%">
-              <femorphology in="SourceAlpha" operator="dilate" radius="7" result="d" />
-              <feoffset in="d" dx="10" dy="16" result="o" />
-              <feflood flood-color="#2B4C7E" flood-opacity="0.18" />
-              <fecomposite in2="o" operator="in" result="sh" />
-              <feflood flood-color="#FFFDF7" />
-              <fecomposite in2="d" operator="in" result="edge" />
-              <femerge><femergenode in="sh" /><femergenode in="edge" /><femergenode in="SourceGraphic" /></femerge>
+      <div data-hf-id="hf-8het" id="world-root" data-composition-id="world" data-width="1080" data-height="1920" data-layout-allow-overflow="">
+        <svg data-hf-id="hf-p3r6" width="0" height="0" style="position: absolute" aria-hidden="true">
+          <defs data-hf-id="hf-h1w1">
+            <filter data-hf-id="hf-s28o" id="w-cut" x="-20%" y="-20%" width="140%" height="140%">
+              <femorphology data-hf-id="hf-9aoy" in="SourceAlpha" operator="dilate" radius="7" result="d" />
+              <feoffset data-hf-id="hf-i2ki" in="d" dx="10" dy="16" result="o" />
+              <feflood data-hf-id="hf-ycc6" flood-color="#2B4C7E" flood-opacity="0.18" />
+              <fecomposite data-hf-id="hf-h2q6" in2="o" operator="in" result="sh" />
+              <feflood data-hf-id="hf-6fyu" flood-color="#FFFDF7" />
+              <fecomposite data-hf-id="hf-asfj" in2="d" operator="in" result="edge" />
+              <femerge data-hf-id="hf-zn2o"><femergenode data-hf-id="hf-n3dy" in="sh" /><femergenode data-hf-id="hf-rtwg" in="edge" /><femergenode data-hf-id="hf-cmaw" in="SourceGraphic" /></femerge>
             </filter>
 %%DEFS%%
           </defs>
         </svg>
 
         <!-- rig A: the floor only (always underneath; separate 3D context avoids Chrome's plane-split bug) -->
-        <div class="w-stage" id="w-stage-floor">
-          <div class="w-flip">
-            <div class="w-camz">
-              <div class="w-camrx">
-                <div class="w-camaz">
+        <div data-hf-id="hf-fo0j" class="w-stage" id="w-stage-floor">
+          <div data-hf-id="hf-cwbd" class="w-flip">
+            <div data-hf-id="hf-zrdh" class="w-camz">
+              <div data-hf-id="hf-ojx3" class="w-camrx">
+                <div data-hf-id="hf-k8qe" class="w-camaz">
                   %%FLOOR%%
                 </div>
               </div>
@@ -162,11 +162,11 @@
           </div>
         </div>
         <!-- rig B: pop-up pages + Romeow, same camera -->
-        <div class="w-stage" id="w-stage">
-          <div class="w-flip">
-            <div class="w-camz">
-              <div class="w-camrx">
-                <div class="w-camaz">
+        <div data-hf-id="hf-r2rm" class="w-stage" id="w-stage">
+          <div data-hf-id="hf-owa5" class="w-flip">
+            <div data-hf-id="hf-epah" class="w-camz">
+              <div data-hf-id="hf-jwlz" class="w-camrx">
+                <div data-hf-id="hf-5o88" class="w-camaz">
 %%PAGES%%
                 </div>
               </div>
@@ -174,42 +174,42 @@
           </div>
         </div>
         <!-- rig C: Romeow + props that stand in front of him (always drawn over the pages) -->
-        <div class="w-stage" id="w-stage-front">
-          <div class="w-flip">
-            <div class="w-camz">
-              <div class="w-camrx">
-                <div class="w-camaz">
+        <div data-hf-id="hf-d618" class="w-stage" id="w-stage-front">
+          <div data-hf-id="hf-q378" class="w-flip">
+            <div data-hf-id="hf-fw7k" class="w-camz">
+              <div data-hf-id="hf-jiay" class="w-camrx">
+                <div data-hf-id="hf-3u1t" class="w-camaz">
 %%FGPAGES%%
-                  <div id="w-orbit">
-                    <div id="w-rad">
-                      <div id="w-hop">
-                        <div id="w-fold">
-                          <div id="w-body">
-                            <svg viewBox="-500 -700 1000 700">
-                              <g id="w-poses" transform="scale(1.093)">
-                                <g class="w-pose" data-pose="sleep" transform="translate(-270 -322)" filter="url(#w-cut)"><use href="#pose-sleep" /></g>
-                                <g class="w-pose" data-pose="stretch" transform="translate(-330 -321)" filter="url(#w-cut)"><use href="#pose-stretch" /></g>
-                                <g class="w-pose" data-pose="meow" transform="translate(-150 -419)" filter="url(#w-cut)">
-                                  <use href="#pose-sit-body" />
-                                  <g id="w-head-meow" transform="translate(50 30) rotate(-10 100 100)"><use href="#rm-head" /><use href="#rm-eyes-open" /><use href="#rm-meow" /></g>
+                  <div data-hf-id="hf-ajr7" id="w-orbit">
+                    <div data-hf-id="hf-qemm" id="w-rad">
+                      <div data-hf-id="hf-j7ba" id="w-hop">
+                        <div data-hf-id="hf-5yg4" id="w-fold">
+                          <div data-hf-id="hf-0jlh" id="w-body">
+                            <svg data-hf-id="hf-qqsp" viewBox="-500 -700 1000 700">
+                              <g data-hf-id="hf-sjdu" id="w-poses" transform="scale(1.093)">
+                                <g data-hf-id="hf-gail" class="w-pose" data-pose="sleep" transform="translate(-270 -322)" filter="url(#w-cut)"><use data-hf-id="hf-94wp" href="#pose-sleep" /></g>
+                                <g data-hf-id="hf-f72n" class="w-pose" data-pose="stretch" transform="translate(-330 -321)" filter="url(#w-cut)"><use data-hf-id="hf-9gsf" href="#pose-stretch" /></g>
+                                <g data-hf-id="hf-aag6" class="w-pose" data-pose="meow" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use data-hf-id="hf-jbpd" href="#pose-sit-body" />
+                                  <g data-hf-id="hf-9qq4" id="w-head-meow" transform="translate(50 30) rotate(-10 100 100)"><use data-hf-id="hf-myv6" href="#rm-head" /><use data-hf-id="hf-j99b" href="#rm-eyes-open" /><use data-hf-id="hf-qq68" href="#rm-meow" /></g>
                                 </g>
-                                <g class="w-pose" data-pose="eat" transform="translate(-150 -419)" filter="url(#w-cut)">
-                                  <use href="#pose-sit-body" />
-                                  <g id="w-head-eat" transform="translate(60 70) rotate(12 100 100)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
+                                <g data-hf-id="hf-npy4" class="w-pose" data-pose="eat" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use data-hf-id="hf-tlp1" href="#pose-sit-body" />
+                                  <g data-hf-id="hf-mg7m" id="w-head-eat" transform="translate(60 70) rotate(12 100 100)"><use data-hf-id="hf-sp5y" href="#rm-head" /><use data-hf-id="hf-gxd3" href="#rm-eyes-happy" /><use data-hf-id="hf-wkbk" href="#rm-smile" /></g>
                                 </g>
-                                <g class="w-pose" data-pose="run" transform="scale(0.82) translate(-400 -282)" filter="url(#w-cut)"><use href="#pose-run" /></g>
-                                <g class="w-pose" data-pose="stare" transform="translate(-150 -419)" filter="url(#w-cut)">
-                                  <use href="#pose-sit-body" />
-                                  <g id="w-paw" transform="rotate(0 200 220)">
-                                    <rect x="190" y="200" width="230" height="38" rx="19" fill="#8A9099" transform="rotate(-8 190 220)" />
-                                    <ellipse cx="416" cy="184" rx="26" ry="16" fill="#F7F7F5" />
+                                <g data-hf-id="hf-hfxw" class="w-pose" data-pose="run" transform="scale(0.82) translate(-400 -282)" filter="url(#w-cut)"><use data-hf-id="hf-g127" href="#pose-run" /></g>
+                                <g data-hf-id="hf-9ykz" class="w-pose" data-pose="stare" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use data-hf-id="hf-usm4" href="#pose-sit-body" />
+                                  <g data-hf-id="hf-3nei" id="w-paw" transform="rotate(0 200 220)">
+                                    <rect data-hf-id="hf-e0zg" x="190" y="200" width="230" height="38" rx="19" fill="#8A9099" transform="rotate(-8 190 220)" />
+                                    <ellipse data-hf-id="hf-b621" cx="416" cy="184" rx="26" ry="16" fill="#F7F7F5" />
                                   </g>
-                                  <g transform="translate(50 30)"><use href="#rm-head" /><use href="#rm-eyes-wide" /><use href="#rm-smile" /></g>
+                                  <g data-hf-id="hf-2lsp" transform="translate(50 30)"><use data-hf-id="hf-t3gz" href="#rm-head" /><use data-hf-id="hf-b6mq" href="#rm-eyes-wide" /><use data-hf-id="hf-illk" href="#rm-smile" /></g>
                                 </g>
-                                <g class="w-pose" data-pose="boxed" transform="translate(-160 -600)" filter="url(#w-cut)">
-                                  <use href="#rm-tail" transform="translate(290 330) rotate(-42) scale(1.7 1.4)" />
-                                  <g transform="translate(60 150) scale(1.2)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
-                                  <path d="M20,400 l-34,-34 l46,6 l-10,-42 l42,32 l10,-32 l22,42 Z M300,400 l34,-34 l-46,6 l10,-42 l-42,32 l-10,-32 l-22,42 Z" fill="#8A9099" />
+                                <g data-hf-id="hf-w3gv" class="w-pose" data-pose="boxed" transform="translate(-160 -600)" filter="url(#w-cut)">
+                                  <use data-hf-id="hf-9qik" href="#rm-tail" transform="translate(290 330) rotate(-42) scale(1.7 1.4)" />
+                                  <g data-hf-id="hf-ovv7" transform="translate(60 150) scale(1.2)"><use data-hf-id="hf-ths0" href="#rm-head" /><use data-hf-id="hf-pnk7" href="#rm-eyes-happy" /><use data-hf-id="hf-heoh" href="#rm-smile" /></g>
+                                  <path data-hf-id="hf-cdo4" d="M20,400 l-34,-34 l46,6 l-10,-42 l42,32 l10,-32 l22,42 Z M300,400 l34,-34 l-46,6 l10,-42 l-42,32 l-10,-32 l-22,42 Z" fill="#8A9099" />
                                 </g>
                               </g>
                             </svg>
