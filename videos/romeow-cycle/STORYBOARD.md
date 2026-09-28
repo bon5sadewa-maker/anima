@@ -43,7 +43,7 @@ version: v1
 
 ## Changes from v1
 
-_(belum ada)_
+- Rencana v1 disetujui pengguna tanpa perubahan. Sketsa v1 dibuat di `storyboard.html`.
 
 ## Still open
 
@@ -52,7 +52,7 @@ _(belum ada)_
 
 ## Frame 1 — Pembuka: Buku Terbuka
 
-- status: outline
+- status: built
 - src: compositions/01-pembuka.html
 - duration: 3s
 - transition_in: cut
@@ -68,7 +68,7 @@ _(belum ada)_
 
 ## Frame 2 — ① Hibernasi Harian
 
-- status: outline
+- status: built
 - src: compositions/02-hibernasi.html
 - duration: 3.5s
 - transition_in: camera-push (lanjutan dari Frame 1)
@@ -83,7 +83,7 @@ _(belum ada)_
 
 ## Frame 3 — ② Peregangan Ekstrem
 
-- status: outline
+- status: built
 - src: compositions/03-peregangan.html
 - duration: 3s
 - transition_in: camera-pan-cw
@@ -98,7 +98,7 @@ _(belum ada)_
 
 ## Frame 4 — ③ Alarm Jam 05.00
 
-- status: outline
+- status: built
 - src: compositions/04-alarm.html
 - duration: 3.5s
 - transition_in: camera-pan-cw
@@ -113,7 +113,7 @@ _(belum ada)_
 
 ## Frame 5 — ④ Makan 3 Suap
 
-- status: outline
+- status: built
 - src: compositions/05-makan.html
 - duration: 3.5s
 - transition_in: camera-pan-cw
@@ -128,7 +128,7 @@ _(belum ada)_
 
 ## Frame 6 — ⑤ Zoomies
 
-- status: outline
+- status: built
 - src: compositions/06-zoomies.html
 - duration: 3.5s
 - transition_in: camera-pan-cw
@@ -143,7 +143,7 @@ _(belum ada)_
 
 ## Frame 7 — ⑥ Eksperimen Gravitasi
 
-- status: outline
+- status: built
 - src: compositions/07-gravitasi.html
 - duration: 3.5s
 - transition_in: camera-pan-cw
@@ -158,7 +158,7 @@ _(belum ada)_
 
 ## Frame 8 — ⑦ Masuk Kardus
 
-- status: outline
+- status: built
 - src: compositions/08-kardus.html
 - duration: 3.5s
 - transition_in: camera-pan-cw
@@ -173,7 +173,7 @@ _(belum ada)_
 
 ## Frame 9 — Penutup: Kembali ke ①
 
-- status: outline
+- status: built
 - src: compositions/09-penutup.html
 - duration: 3s
 - transition_in: camera-pull-back
