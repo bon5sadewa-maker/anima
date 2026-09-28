@@ -36,7 +36,8 @@
       </style>
 
       <div id="p09-root" data-composition-id="p09" data-width="1080" data-height="1920">
-        <div class="L" id="p09-bab" data-layout-allow-overlap style="transform-origin:540px 330px;"><svg viewBox="0 0 1080 1920"><text x="540" y="330" font-family="Space Mono" font-weight="700" letter-spacing="4" font-size="34" text-anchor="middle" fill="#2B4C7E" >BAB 3 · MAKHLUK HIDUP DI SEKITAR KITA</text></svg></div><div class="L" id="p09-cap1" data-layout-allow-overlap style="transform-origin:540px 1400px;"><svg viewBox="0 0 1080 1920"><text x="540" y="1400" font-family="Fraunces" font-weight="700" font-style="italic" font-size="40" text-anchor="middle" fill="#2B4C7E" >Gambar 1.3 Siklus hidup Romeow.</text></svg></div><div class="L" id="p09-cap2" data-layout-allow-overlap style="transform-origin:540px 1462px;"><svg viewBox="0 0 1080 1920"><text x="540" y="1462" font-family="Caveat" font-weight="700" font-size="48" text-anchor="middle" fill="#2B4C7E" opacity="0.85">catatan: fase 1 paling lama</text></svg></div>
+        <div class="L" id="p09-bab" data-layout-allow-overlap style="transform-origin:540px 330px;"><svg viewBox="0 0 1080 1920"><text data-layout-allow-overlap x="540" y="330" font-family="Space Mono" font-weight="700" letter-spacing="4" font-size="34" text-anchor="middle" fill="#2B4C7E" >BAB 3 · MAKHLUK HIDUP DI SEKITAR KITA</text></svg></div><div class="L" id="p09-cap1" data-layout-allow-overlap style="transform-origin:540px 1400px;"><svg viewBox="0 0 1080 1920"><text data-layout-allow-overlap x="540" y="1400" font-family="Fraunces" font-weight="700" font-style="italic" font-size="40" text-anchor="middle" fill="#2B4C7E" >Gambar 1.3 Siklus hidup Romeow.</text></svg></div><div class="L" id="p09-cap2" data-layout-allow-overlap style="transform-origin:540px 1462px;"><svg viewBox="0 0 1080 1920"><text data-layout-allow-overlap x="540" y="1462" font-family="Caveat" font-weight="700" font-size="48" text-anchor="middle" fill="#2B4C7E" opacity="0.85">catatan: fase 1 paling lama</text></svg></div>
+        <audio id="p09-sfx0" src="assets/sfx/whoosh-cinematic.mp3" data-start="0" data-duration="1.4" data-hf-media-start-basis="local" data-volume="0.4"></audio><audio id="p09-sfx1" src="assets/sfx/sparkle.mp3" data-start="1.2" data-duration="1.2" data-hf-media-start-basis="local" data-volume="0.3"></audio><audio id="p09-sfx2" src="assets/sfx/pop.mp3" data-start="2.1" data-duration="0.5" data-hf-media-start-basis="local" data-volume="0.22"></audio>
       </div>
 
       <script>
@@ -66,8 +67,8 @@
 
           // write the caption back in and hold it: the last frame matches p01's first frame
           popIn($("bab"), Math.max(D - 1.5, 0.3), 0.5);
-          write($("cap1"), Math.max(D - 1.2, 0.5), 0.55, 250, 830);
-          write($("cap2"), Math.max(D - 0.75, 0.9), 0.5, 290, 790);
+          write($("cap1"), Math.max(D - 1.2, 0.5), 0.55, 230, 1080);
+          write($("cap2"), Math.max(D - 0.75, 0.9), 0.5, 270, 1080);
 
           tl.seek(tl.duration(), true).seek(0, true);
           window.__timelines[CID] = tl;

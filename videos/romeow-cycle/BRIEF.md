@@ -40,8 +40,10 @@ Penutup, kembali ke ① (27–30). Frame 30s = frame 0.
 - **Catatan fakta** per fase, gaya tulisan tangan.
 - **Timing bisa direvisi manual** — tiap fase adalah klip/sub-komposisi terpisah di timeline
   HyperFrames Studio, animasi di dalamnya relatif terhadap awal klip.
-- **Audio**: tanpa narasi; musik latar ukulele/pizzicato ringan yang bisa di-loop + SFX per
-  fase (dengkur, meow, kriuk ×3, whoosh, tink gelas, pluk kardus).
+- **Audio**: tanpa narasi. Jalur offline dipilih pengguna (HeyGen belum login): musik ukulele +
+  pizzicato disintesis sendiri (`src/compose-bgm.py` → `assets/audio/romeow-bgm.wav`, 128 BPM,
+  pas 30 dtk, loop mulus) + SFX bawaan HyperFrames (whoosh, pop, chime, klik, ping, sparkle,
+  impact) per fase. Tanpa suara meow/dengkur asli — bisa ditambah nanti lewat katalog HeyGen.
 
 ## Notes
 

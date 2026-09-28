@@ -28,13 +28,22 @@ def T(x, y, s, size, family="d", anchor="start", fill=INK, extra=""):
         "h": 'font-family="Caveat" font-weight="700"',
         "m": 'font-family="Space Mono" font-weight="700" letter-spacing="4"',
     }[family]
-    return f'<text x="{x}" y="{y}" {fam} font-size="{size}" text-anchor="{anchor}" fill="{fill}" {extra}>{s}</text>'
+    return f'<text data-layout-allow-overlap x="{x}" y="{y}" {fam} font-size="{size}" text-anchor="{anchor}" fill="{fill}" {extra}>{s}</text>'
 
 
 class Comp:
     def __init__(self, cid, phase, slug, default_dur):
         self.cid, self.phase, self.slug, self.dur = cid, phase, slug, default_dur
         self.layers = []
+        self.sfx = []
+
+    def S(self, name, at, vol, dur):
+        """A sound effect timed from this phase's own start (moves with the clip in Studio)."""
+        n = len(self.sfx)
+        self.sfx.append(
+            f'<audio id="{self.cid}-sfx{n}" src="assets/sfx/{name}.mp3" data-start="{at}" data-duration="{dur}" '
+            f'data-hf-media-start-basis="local" data-volume="{vol}"></audio>'
+        )
 
     def L(self, name, inner, ox=540, oy=960, wrap=None, style=""):
         el = (
@@ -81,6 +90,7 @@ class Comp:
 
       <div id="{c}-root" data-composition-id="{c}" data-width="1080" data-height="1920">
         {"".join(self.layers)}
+        {"".join(self.sfx)}
       </div>
 
       <script>
@@ -148,9 +158,9 @@ c.L("z2", T(240, 840 + DY, "z", 84, extra='opacity="0.7"'), 260, 815 + DY)
 c.L("z3", T(170, 750 + DY, "Z", 110), 200, 715 + DY, style="filter: drop-shadow(6px 10px 0 rgba(43,76,126,0.18))")
 arc = "M470,1045 Q760,770 1050,1065"
 letters = "Hibernasi Harian"
-tsp = "".join(f'<tspan id="p02-a{i}">{ch if ch != " " else "&#160;"}</tspan>' for i, ch in enumerate(letters))
+tsp = "".join(f'<tspan data-layout-allow-overlap id="p02-a{i}">{ch if ch != " " else "&#160;"}</tspan>' for i, ch in enumerate(letters))
 c.L("arc", f'<path id="p02-arcpath" d="{arc}" fill="none"/>'
-    f'<text font-family="Fraunces" font-weight="900" font-size="74" fill="{INK}"><textPath href="#p02-arcpath" startOffset="50%" text-anchor="middle">{tsp}</textPath></text>',
+    f'<text data-layout-allow-overlap font-family="Fraunces" font-weight="900" font-size="74" fill="{INK}"><textPath href="#p02-arcpath" startOffset="50%" text-anchor="middle">{tsp}</textPath></text>',
     760, 960)
 c.L("fact", T(110, 1470, "fase terpanjang — ekor jadi selimut", 56, "h", extra='opacity="0.9"'), 110, 1470)
 PHASES.append((c, f"""
@@ -371,13 +381,28 @@ c.L("cap2", T(540, 1462, "catatan: fase 1 paling lama", 48, "h", "middle", extra
 PHASES.append((c, """
           // write the caption back in and hold it: the last frame matches p01's first frame
           popIn($("bab"), Math.max(D - 1.5, 0.3), 0.5);
-          write($("cap1"), Math.max(D - 1.2, 0.5), 0.55, 250, 830);
-          write($("cap2"), Math.max(D - 0.75, 0.9), 0.5, 290, 790);
+          write($("cap1"), Math.max(D - 1.2, 0.5), 0.55, 230, 1080);
+          write($("cap2"), Math.max(D - 0.75, 0.9), 0.5, 270, 1080);
 """))
+
+
+SFX = {
+    "p01": [("sparkle", 0.3, 0.3, 1.2)],
+    "p02": [("whoosh-short", 0, 0.45, 0.57)],
+    "p03": [("whoosh-short", 0, 0.4, 0.57), ("pop", 0.1, 0.3, 0.5)],
+    "p04": [("whoosh-short", 0, 0.4, 0.57), ("pop", 0.55, 0.3, 0.5), ("chime", 0.73, 0.3, 1.2), ("pop", 1.25, 0.42, 0.5), ("pop", 1.95, 0.6, 0.5)],
+    "p05": [("whoosh-short", 0, 0.4, 0.57), ("click-soft", 0.59, 0.55, 0.37), ("click-soft", 1.09, 0.55, 0.37), ("click-soft", 1.59, 0.55, 0.37)],
+    "p06": [("whoosh-cinematic", 0, 0.45, 1.4), ("pop", 2.45, 0.4, 0.5)],
+    "p07": [("whoosh-short", 0, 0.4, 0.57), ("click-soft", 0.35, 0.3, 0.37), ("click-soft", 0.75, 0.3, 0.37), ("click-soft", 1.15, 0.3, 0.37), ("ping", 2.03, 0.55, 1.2)],
+    "p08": [("whoosh-short", 0, 0.4, 0.57), ("pop", 0.05, 0.5, 0.5), ("impact-bass-1", 0.7, 0.3, 1.2)],
+    "p09": [("whoosh-cinematic", 0, 0.4, 1.4), ("sparkle", 1.2, 0.3, 1.2), ("pop", 2.1, 0.22, 0.5)],
+}
 
 
 def main():
     for comp, js in PHASES:
+        for name, at, vol, dur in SFX.get(comp.cid, []):
+            comp.S(name, at, vol, dur)
         path = ROOT / "compositions" / f"{comp.cid}-{comp.slug}.html"
         path.write_text(comp.html(js))
         print("wrote", path.name)

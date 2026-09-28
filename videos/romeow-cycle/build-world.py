@@ -34,7 +34,7 @@ def place(sx, sy_bottom, z, w, h, cls, pid, inner, viewbox=None, extra=""):
     pw, ph = w * k, h * k
     vb = viewbox or f"0 0 {w} {h}"
     return (
-        f'<div class="w-prop {cls}" id="{pid}" data-z="{z}" '
+        f'<div class="w-prop {cls}" id="{pid}" data-z="{z}" data-layout-ignore '
         f'style="left:{cx - pw / 2:.1f}px;top:{by - ph:.1f}px;width:{pw:.1f}px;height:{ph:.1f}px"{extra}>'
         f'<svg viewBox="{vb}">{inner}</svg></div>'
     )
@@ -108,7 +108,7 @@ def pages():
             f'<div class="w-pagepos" data-k="{k}" id="w-page-{k}" style="transform: rotateY({a:.4f}deg) translateZ({RP}px) rotateY(180deg)">'
             f'<div class="w-pagefold" data-k="{k}" id="w-pagefold-{k}">'
             f'<div class="w-face w-front"><div class="w-paper"></div>{back}</div>'
-            f'<div class="w-face w-back" style="transform: rotateY(180deg)"><div class="w-paper"></div><div class="w-backnum">{k}</div></div>'
+            f'<div class="w-face w-back" style="transform: rotateY(180deg)"><div class="w-paper"></div><div class="w-backnum" data-layout-ignore>{k}</div></div>'
             f"</div></div>"
         )
     return "\n".join(out)
@@ -188,7 +188,7 @@ def wedges():
         a = -(k - 1) * STEP
         poly = f"0,0 {-half:.1f},{H:.1f} {half:.1f},{H:.1f}"
         out.append(
-            f'<div class="w-wedgepos" style="transform: rotateY({a:.4f}deg)">'
+            f'<div class="w-wedgepos" data-layout-ignore style="transform: rotateY({a:.4f}deg)">'
             f'<div class="w-wedge" id="w-wedge-{k}" style="left:{-half:.1f}px;width:{W:.1f}px;height:{H:.1f}px">'
             f'<svg viewBox="{-half:.1f} 0 {W:.1f} {H:.1f}">'
             f'<clipPath id="w-clip-{k}"><polygon points="{poly}"/></clipPath>'

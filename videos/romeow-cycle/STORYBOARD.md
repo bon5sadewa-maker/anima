@@ -50,14 +50,19 @@ version: v2
 - Catatan pengguna atas sketsa v1 (verbatim): "saya mau kucingnya dari frame ke frame itu continue kucing yang sama, lalu ada efek 3D juga ketika transisi.. lalu text typografinya jangan cuma diatas, tapi dia bisa kreatif menyatu dengan romeow mengisi breathed space"
 - v2: Romeow jadi satu aktor kontinu (ukuran tetap, berpijak di rel panah, berpindah fase di dalam transisi). Transisi 3D berupa kamera terbang dengan potongan kertas yang terlipat dan berdiri. Tipografi dipindah dari blok atas ke ruang kosong di sekitar Romeow, di semua frame.
 
+## Locked
+
+- Layout v2 dikunci pengguna ("kunci").
+- Build: satu dunia 3D (`compositions/world.html`, dibangun dari `src/world.src.html` oleh `build-world.py`) + 9 klip tipografi (`compositions/p01..p09`, dibangun oleh `build-phases.py`). Nama file berbeda dari `src:` rencana karena Romeow dan kamera hidup di satu dunia bersama; tiap frame di bawah = satu klip fase di track 1.
+- Timing akhir sama dengan tabel rencana (30,0 dtk); frame 30,0 = frame 0,0 (diverifikasi lewat snapshot).
+
 ## Still open
 
-- Bentuk telinga dan ekor Romeow dikunci di sketsa.
-- Pilihan musik latar ditentukan saat build.
+- (tidak ada)
 
 ## Frame 1 — Pembuka: Buku Terbuka
 
-- status: built
+- status: animated
 - src: compositions/01-pembuka.html
 - duration: 3s
 - transition_in: cut
@@ -73,7 +78,7 @@ version: v2
 
 ## Frame 2 — ① Hibernasi Harian
 
-- status: built
+- status: animated
 - src: compositions/02-hibernasi.html
 - duration: 3.5s
 - transition_in: 3d-dive — kamera menukik dari sudut 35° ke ①, potongan fase ① berdiri
@@ -88,7 +93,7 @@ version: v2
 
 ## Frame 3 — ② Peregangan Ekstrem
 
-- status: built
+- status: animated
 - src: compositions/03-peregangan.html
 - duration: 3s
 - transition_in: 3d-orbit-glide — kamera mengorbit sepanjang busur, Romeow bangun dan berjalan
@@ -103,7 +108,7 @@ version: v2
 
 ## Frame 4 — ③ Alarm Jam 05.00
 
-- status: built
+- status: animated
 - src: compositions/04-alarm.html
 - duration: 3.5s
 - transition_in: 3d-hop — Romeow melompat, kamera ikut naik (rotateX) lalu turun
@@ -118,7 +123,7 @@ version: v2
 
 ## Frame 5 — ④ Makan 3 Suap
 
-- status: built
+- status: animated
 - src: compositions/05-makan.html
 - duration: 3.5s
 - transition_in: 3d-whip-orbit — kamera berayun cepat dengan blur kedalaman, Romeow berlari kecil ke mangkuk
@@ -133,7 +138,7 @@ version: v2
 
 ## Frame 6 — ⑤ Zoomies
 
-- status: built
+- status: animated
 - src: compositions/06-zoomies.html
 - duration: 3.5s
 - transition_in: 3d-spin — kamera berputar mengelilingi pusat lingkaran, Romeow melesat dengan motion blur
@@ -148,7 +153,7 @@ version: v2
 
 ## Frame 7 — ⑥ Eksperimen Gravitasi
 
-- status: built
+- status: animated
 - src: compositions/07-gravitasi.html
 - duration: 3.5s
 - transition_in: 3d-crash-low — rem mendadak, kamera turun ke sudut rendah sejajar mata Romeow
@@ -163,7 +168,7 @@ version: v2
 
 ## Frame 8 — ⑦ Masuk Kardus
 
-- status: built
+- status: animated
 - src: compositions/08-kardus.html
 - duration: 3.5s
 - transition_in: 3d-tilt-follow — kamera mengikuti gelas jatuh (miring ke bawah), mendarat di kardus
@@ -178,7 +183,7 @@ version: v2
 
 ## Frame 9 — Penutup: Kembali ke ①
 
-- status: built
+- status: animated
 - src: compositions/09-penutup.html
 - duration: 3s
 - transition_in: 3d-pull-up — kamera naik dan miring ke pandangan halaman penuh
