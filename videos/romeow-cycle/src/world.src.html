@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8">
+    <!-- Source for compositions/world.html (build-world.py inlines Romeow's drawing library). Edit this, then run build-world.py. -->
+  </head>
+  <body>
+    <template>
+      <style>
+        @font-face {
+          font-family: "Fraunces";
+          src: url("assets/fonts/Fraunces-latin-var.woff2") format("woff2");
+          font-weight: 100 900;
+        }
+        #world-root {
+          position: absolute;
+          inset: 0;
+          overflow: hidden;
+          background: radial-gradient(ellipse at 50% 45%, #E4DAC6 0%, #CFC3AA 70%, #BBAE93 100%);
+        }
+        .w-stage {
+          position: absolute;
+          inset: 0;
+          perspective: 1800px;
+          perspective-origin: 540px 960px;
+        }
+        .w-flip,
+        .w-camz,
+        .w-camrx,
+        .w-camaz,
+        .w-pagepos,
+        .w-pagefold,
+        .w-face,
+        #w-orbit,
+        #w-rad,
+        #w-hop,
+        #w-fold {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 0;
+          transform-style: preserve-3d;
+        }
+        #w-rad {
+          transform: translateZ(980px) rotateY(180deg); /* RR: Romeow's track, facing the centre */
+        }
+        .w-flip {
+          left: 540px;
+          top: 960px;
+          transform: rotateY(180deg);
+        }
+        /* floor: the textbook diagram page, lying flat at y = 0 */
+        .w-wedgepos {
+          position: absolute;
+          left: 0;
+          top: 0;
+          width: 0;
+          height: 0;
+          transform-style: preserve-3d;
+        }
+        .w-wedge {
+          position: absolute;
+          top: 0;
+          transform: rotateX(90deg);
+          transform-origin: 50% 0;
+        }
+        .w-wedge svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+        /* pages: 1080x1300 standing on the floor, hinge at the bottom edge */
+        .w-pagefold {
+          left: -540px;
+          top: -1300px;
+          width: 1080px;
+          height: 1300px;
+        }
+        .w-face {
+          width: 1080px;
+          height: 1300px;
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+        }
+        .w-paper {
+          position: absolute;
+          inset: 0;
+          background:
+            linear-gradient(90deg, transparent 69px, rgba(43, 76, 126, 0.16) 69px, rgba(43, 76, 126, 0.16) 72px, transparent 72px),
+            repeating-linear-gradient(180deg, transparent 0 78px, rgba(43, 76, 126, 0.09) 78px 80px),
+            #F6F1E7;
+          box-shadow: inset 0 0 0 14px rgba(43, 76, 126, 0.05);
+        }
+        .w-back .w-paper {
+          background:
+            repeating-linear-gradient(180deg, transparent 0 78px, rgba(43, 76, 126, 0.07) 78px 80px),
+            #EFE7D8;
+        }
+        .w-backnum {
+          position: absolute;
+          inset: 0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: "Fraunces", serif;
+          font-weight: 900;
+          font-size: 520px;
+          color: rgba(43, 76, 126, 0.12);
+        }
+        .w-prop {
+          position: absolute;
+        }
+        .w-prop svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+        /* Romeow: one actor, feet at the local origin */
+        #w-body {
+          position: absolute;
+          left: -500px;
+          top: -700px;
+          width: 1000px;
+          height: 700px;
+        }
+        #w-body svg {
+          display: block;
+          width: 100%;
+          height: 100%;
+          overflow: visible;
+        }
+      </style>
+
+      <div id="world-root" data-composition-id="world" data-width="1080" data-height="1920" data-layout-allow-overflow="">
+        <svg width="0" height="0" style="position: absolute" aria-hidden="true">
+          <defs>
+            <filter id="w-cut" x="-20%" y="-20%" width="140%" height="140%">
+              <femorphology in="SourceAlpha" operator="dilate" radius="7" result="d" />
+              <feoffset in="d" dx="10" dy="16" result="o" />
+              <feflood flood-color="#2B4C7E" flood-opacity="0.18" />
+              <fecomposite in2="o" operator="in" result="sh" />
+              <feflood flood-color="#FFFDF7" />
+              <fecomposite in2="d" operator="in" result="edge" />
+              <femerge><femergenode in="sh" /><femergenode in="edge" /><femergenode in="SourceGraphic" /></femerge>
+            </filter>
+%%DEFS%%
+          </defs>
+        </svg>
+
+        <!-- rig A: the floor only (always underneath; separate 3D context avoids Chrome's plane-split bug) -->
+        <div class="w-stage" id="w-stage-floor">
+          <div class="w-flip">
+            <div class="w-camz">
+              <div class="w-camrx">
+                <div class="w-camaz">
+                  %%FLOOR%%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- rig B: pop-up pages + Romeow, same camera -->
+        <div class="w-stage" id="w-stage">
+          <div class="w-flip">
+            <div class="w-camz">
+              <div class="w-camrx">
+                <div class="w-camaz">
+%%PAGES%%
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- rig C: Romeow + props that stand in front of him (always drawn over the pages) -->
+        <div class="w-stage" id="w-stage-front">
+          <div class="w-flip">
+            <div class="w-camz">
+              <div class="w-camrx">
+                <div class="w-camaz">
+%%FGPAGES%%
+                  <div id="w-orbit">
+                    <div id="w-rad">
+                      <div id="w-hop">
+                        <div id="w-fold">
+                          <div id="w-body">
+                            <svg viewBox="-500 -700 1000 700">
+                              <g id="w-poses" transform="scale(1.093)">
+                                <g class="w-pose" data-pose="sleep" transform="translate(-270 -322)" filter="url(#w-cut)"><use href="#pose-sleep" /></g>
+                                <g class="w-pose" data-pose="stretch" transform="translate(-330 -321)" filter="url(#w-cut)"><use href="#pose-stretch" /></g>
+                                <g class="w-pose" data-pose="meow" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use href="#pose-sit-body" />
+                                  <g id="w-head-meow" transform="translate(50 30) rotate(-10 100 100)"><use href="#rm-head" /><use href="#rm-eyes-open" /><use href="#rm-meow" /></g>
+                                </g>
+                                <g class="w-pose" data-pose="eat" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use href="#pose-sit-body" />
+                                  <g id="w-head-eat" transform="translate(60 70) rotate(12 100 100)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
+                                </g>
+                                <g class="w-pose" data-pose="run" transform="scale(0.82) translate(-400 -282)" filter="url(#w-cut)"><use href="#pose-run" /></g>
+                                <g class="w-pose" data-pose="stare" transform="translate(-150 -419)" filter="url(#w-cut)">
+                                  <use href="#pose-sit-body" />
+                                  <g id="w-paw" transform="rotate(0 200 220)">
+                                    <rect x="190" y="200" width="230" height="38" rx="19" fill="#8A9099" transform="rotate(-8 190 220)" />
+                                    <ellipse cx="416" cy="184" rx="26" ry="16" fill="#F7F7F5" />
+                                  </g>
+                                  <g transform="translate(50 30)"><use href="#rm-head" /><use href="#rm-eyes-wide" /><use href="#rm-smile" /></g>
+                                </g>
+                                <g class="w-pose" data-pose="boxed" transform="translate(-160 -600)" filter="url(#w-cut)">
+                                  <use href="#rm-tail" transform="translate(290 330) rotate(-42) scale(1.7 1.4)" />
+                                  <g transform="translate(60 150) scale(1.2)"><use href="#rm-head" /><use href="#rm-eyes-happy" /><use href="#rm-smile" /></g>
+                                  <path d="M20,400 l-34,-34 l46,6 l-10,-42 l42,32 l10,-32 l22,42 Z M300,400 l34,-34 l-46,6 l10,-42 l-42,32 l-10,-32 l-22,42 Z" fill="#8A9099" />
+                                </g>
+                              </g>
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <script>
+        (function () {
+          // ---- geometry (world units = px at the page plane) ----
+          const P = 1800; // lens, matches #w-stage perspective
+          const RP = 1140; // page ring radius (pages face the centre)
+          const RR = 980; // Romeow's track = the arrow ring on the floor
+          const N = 7;
+          const STEP = 360 / N;
+          const A = (k) => -(k - 1) * STEP; // station k angle (clockwise on the overview)
+          // Close-up pose puts page k exactly full-frame (identity), floor line at screen y 1300.
+          const ST = (k) => ({ az: A(k), rx: 0, rz: 0, dist: 0, ty: 0 });
+          const FLAT = -88;
+          const LIFT = -26; // lying Romeow rests just above the folded page ① // Romeow lying flat on the diagram (overview)
+          const OV = { az: 0, rx: 68, rz: 0, dist: 4700, ty: -520 };
+
+          // ---- phase timing comes from the phase clips in index.html (Studio-editable) ----
+          // Composition scripts get a document scoped to this composition; the phase clips live in
+          // index.html, so read them from the real page document (build time only, deterministic).
+          const PAGE = document.querySelector(".w-stage").ownerDocument;
+          const hosts = Array.from(PAGE.querySelectorAll("[data-phase]")).sort(
+            (a, b) => Number(a.dataset.phase) - Number(b.dataset.phase),
+          );
+          const PH = {};
+          hosts.forEach((h) => {
+            const s = parseFloat(h.getAttribute("data-start"));
+            const d = parseFloat(h.getAttribute("data-duration"));
+            PH[Number(h.dataset.phase)] = { s: s, d: d, e: s + d };
+          });
+          const b = (n) => PH[n].s; // phase n start (phase 2..8 = station 1..7)
+
+          const $ = (sel) => document.querySelector(sel);
+          const camz = Array.from(document.querySelectorAll(".w-camz")),
+            camrx = Array.from(document.querySelectorAll(".w-camrx")),
+            camaz = Array.from(document.querySelectorAll(".w-camaz"));
+          const stage = $("#w-stage");
+          const orbit = $("#w-orbit"),
+            hop = $("#w-hop"),
+            fold = $("#w-fold"),
+            body = $("#w-body");
+          const foldsB = Array.from(document.querySelectorAll("#w-stage .w-pagefold"));
+          const foldsC = {};
+          document.querySelectorAll("#w-stage-front .w-pagefold").forEach((el) => (foldsC[el.dataset.k] = el));
+          const folds = foldsB.map((el, i) => (foldsC[i + 1] ? [el, foldsC[i + 1]] : [el]));
+          const poses = {};
+          document.querySelectorAll(".w-pose").forEach((g) => (poses[g.dataset.pose] = g));
+
+          // ---- Romeow's per-station screen x (from the locked sketches) -> angle offset on the ring ----
+          const SX = { 1: 540, 2: 470, 3: 300, 4: 300, 5: 640, 6: 280, 7: 540 };
+          function screenX(delta) {
+            const r = (delta * Math.PI) / 180;
+            const lateral = RR * Math.sin(r);
+            const depth = RP - RR * Math.cos(r); // distance in front of the page plane
+            return 540 + (lateral * P) / (P - depth);
+          }
+          function deltaFor(sx) {
+            let lo = -40,
+              hi = 40;
+            for (let i = 0; i < 60; i++) {
+              const mid = (lo + hi) / 2;
+              if (screenX(mid) < sx) lo = mid;
+              else hi = mid;
+            }
+            return (lo + hi) / 2;
+          }
+          const PHI = (k) => A(k) - deltaFor(SX[k]); // stations run clockwise, so screen-right is -angle
+
+          const tl = gsap.timeline({ paused: true });
+
+          // ---- helpers ----
+          function cam(t, dur, to, ease, mid) {
+            const kf = (from, key) => (mid && mid[key] !== undefined ? [mid[key], to[key]] : null);
+            const e = ease || "power2.inOut";
+            const Z = (p) => -RP + p.dist;
+            const Y = (p) => 340 + p.ty;
+            if (mid) {
+              const h = dur / 2;
+              tl.to(camz, { y: Y({ ty: mid.ty ?? to.ty }), z: Z({ dist: mid.dist ?? to.dist }), duration: h, ease: "sine.in" }, t);
+              tl.to(camz, { y: Y(to), z: Z(to), duration: h, ease: "sine.out" }, t + h);
+              tl.to(camrx, { rotationX: mid.rx ?? to.rx, rotationZ: mid.rz ?? to.rz, duration: h, ease: "sine.in" }, t);
+              tl.to(camrx, { rotationX: to.rx, rotationZ: to.rz, duration: h, ease: "sine.out" }, t + h);
+            } else {
+              tl.to(camz, { y: Y(to), z: Z(to), duration: dur, ease: e }, t);
+              tl.to(camrx, { rotationX: to.rx, rotationZ: to.rz, duration: dur, ease: e }, t);
+            }
+            tl.to(camaz, { rotationY: -to.az, duration: dur, ease: e }, t);
+          }
+          function pose(name, t) {
+            Object.keys(poses).forEach((k) => tl.set(poses[k], { opacity: k === name ? 1 : 0 }, t));
+          }
+          function pageUp(k, t, dur) {
+            tl.to(folds[k - 1], { rotationX: 0, duration: dur || 0.8, ease: "back.out(1.4)" }, t);
+          }
+          function pageDown(k, t, dur) {
+            tl.to(folds[k - 1], { rotationX: 89, duration: dur || 0.7, ease: "power2.in" }, t);
+          }
+          function travel(t, dur, toPhi, ease) {
+            tl.to(orbit, { rotationY: toPhi, duration: dur, ease: ease || "power1.inOut" }, t);
+          }
+          function trot(t, dur, height, steps) {
+            const n = steps || Math.max(2, Math.round(dur / 0.22));
+            const d = dur / n;
+            for (let i = 0; i < n; i++) {
+              tl.to(hop, { y: -(height || 34), duration: d / 2, ease: "sine.out" }, t + i * d);
+              tl.to(hop, { y: 0, duration: d / 2, ease: "sine.in" }, t + i * d + d / 2);
+            }
+          }
+          function squash(t, sx, sy, d) {
+            tl.to(body, { scaleX: sx, scaleY: sy, duration: (d || 0.3) * 0.4, ease: "power2.out" }, t);
+            tl.to(body, { scaleX: 1, scaleY: 1, duration: (d || 0.3) * 0.6, ease: "back.out(3)" }, t + (d || 0.3) * 0.4);
+          }
+
+          // ---- what may render: never anything behind the lens (breaks Chrome's 3D sort) ----
+          const wedgeEls = Array.from(document.querySelectorAll(".w-wedgepos"));
+          const pageEls = Array.from(document.querySelectorAll("#w-stage .w-pagepos")).map((el, i) => {
+            const fg = Array.from(document.querySelectorAll("#w-stage-front .w-pagepos")).find((f) => Number(f.dataset.k) === i + 1);
+            return fg ? [el, fg] : [el];
+          });
+          const wrap = (k) => ((((k - 1) % N) + N) % N) + 1;
+          function showOnly(ks, t) {
+            const on = new Set(ks.map(wrap));
+            for (let k = 1; k <= N; k++) {
+              const v = on.has(k) ? "visible" : "hidden";
+              tl.set(pageEls[k - 1], { visibility: v }, t);
+            }
+          }
+          const ALL = [1, 2, 3, 4, 5, 6, 7];
+          const near = (k, extra) => [k - 2, k - 1, k, k + 1, k + 2].concat(extra ? [k + 3] : []);
+
+          // ---- initial state = loop state (overview, pages folded, Romeow asleep at ①, lying flat) ----
+          gsap.set(body, { transformOrigin: "500px 700px" });
+          gsap.set(document.querySelectorAll(".w-pagefold"), { transformOrigin: "540px 1300px" });
+          tl.set(camz, { x: 0, y: 340 + OV.ty, z: -RP + OV.dist }, 0);
+          tl.set(camrx, { rotationX: OV.rx, rotationZ: 0 }, 0);
+          tl.set(camaz, { rotationY: -OV.az }, 0);
+          tl.set(document.querySelectorAll(".w-pagefold"), { rotationX: 89 }, 0);
+          tl.set(orbit, { rotationY: PHI(1) }, 0);
+          tl.set(hop, { y: LIFT }, 0);
+          tl.set(fold, { rotationX: FLAT }, 0);
+          tl.set(body, { scaleX: 1, scaleY: 1 }, 0);
+          pose("sleep", 0);
+          showOnly(ALL, 0);
+
+
+          // ================= CHOREOGRAPHY (all times derived from the phase clips) =================
+          const RINGC = 2 * Math.PI * RR;
+          const ringhi = $("#w-ringhi");
+          const titleHi = $("#w-title-hi");
+          const titleRomeow = $("#w-title-romeow");
+          const diagram = $("#w-diagram");
+          const clock = $("#w-clock"), pillow = $("#w-pillow"), three = $("#w-three"), bowl = $("#w-bowl");
+          const glass = $("#w-glass"), box = $("#w-box"), flap = $("#w-flap");
+          const speeds = Array.from(document.querySelectorAll(".w-speed"));
+          document.querySelectorAll(".w-prop").forEach((el) => gsap.set(el, { z: Number(el.dataset.z || 0) }));
+          const ringTo = (frac) => ({ attr: { "stroke-dasharray": `${(RINGC * frac).toFixed(1)} ${RINGC.toFixed(1)}` } });
+          tl.set(ringhi, { attr: { "stroke-dasharray": `0 ${RINGC.toFixed(1)}` }, opacity: 1 }, 0);
+          tl.set(titleHi, { scaleX: 0, transformOrigin: "0% 50%" }, 0);
+          tl.set(diagram, { opacity: 1 }, 0);
+          tl.set(glass, { x: 0, y: 0, rotation: 0, opacity: 1 }, 0);
+          speeds.forEach((el, i) => tl.set(el, { x: 260 + i * 80, opacity: 1 }, 0));
+
+          // --- P1 · pembuka: title kinetics on the diagram, then the dive to ① ---
+          const t1 = b(1);
+          tl.fromTo(titleRomeow, { y: 0 }, { y: -60, duration: 0.18, ease: "power2.out" }, t1 + 0.2);
+          tl.to(titleRomeow, { y: 0, duration: 0.5, ease: "bounce.out" }, t1 + 0.38);
+          tl.to(titleHi, { scaleX: 1, duration: 0.45, ease: "power3.out" }, t1 + 0.35);
+          const D0 = b(2) - 1.35;
+          cam(D0, 2.05, ST(1), "power3.inOut");
+          showOnly(near(1), D0 + 1.25);
+          pageUp(1, b(2) - 0.85, 0.95);
+          tl.to(fold, { rotationX: 0, duration: 0.8, ease: "back.out(1.6)" }, b(2) - 0.8);
+          tl.to(hop, { y: 0, duration: 0.4, ease: "power2.out" }, b(2) - 0.8);
+          tl.to(diagram, { opacity: 0, duration: 0.6 }, b(2) - 0.4);
+          tl.to(ringhi, { ...ringTo(0.5 / N), duration: 0.8, ease: "power2.out" }, b(2) + 0.3);
+
+          // --- ① Hibernasi: breathing ---
+          {
+            const s = b(2), d = PH[2].d;
+            const n = Math.max(1, Math.floor((d - 1.2) / 1.1));
+            for (let i = 0; i < n; i++) {
+              tl.to(body, { scaleY: 1.045, scaleX: 0.985, duration: 0.55, ease: "sine.inOut" }, s + 0.5 + i * 1.1);
+              tl.to(body, { scaleY: 1, scaleX: 1, duration: 0.55, ease: "sine.inOut" }, s + 1.05 + i * 1.1);
+            }
+          }
+
+          // --- seams between stations ---
+          const SEAM = {
+            1: { mid: { dist: 700, rx: 6, ty: 0 }, ease: "sine.inOut", move: "trot" },
+            2: { mid: { dist: 520, rx: -12, ty: 140 }, ease: "power2.inOut", move: "hop" },
+            3: { mid: { dist: 950, rx: 4, ty: 0, rz: 5 }, ease: "expo.inOut", move: "dash", blur: 7 },
+            4: { mid: { dist: 1150, rx: 8, ty: -60, rz: -12 }, ease: "expo.inOut", move: "dash", blur: 9 },
+            5: { mid: { dist: 380, rx: -9, ty: -180 }, ease: "power4.out", move: "brake" },
+            6: { mid: { dist: 600, rx: 16, ty: 60 }, ease: "power2.inOut", move: "hopbox" },
+          };
+          const ARRIVE = { 2: "stretch", 3: "meow", 4: "eat", 5: "run", 6: "stare", 7: "boxed" };
+          for (let k = 1; k <= 6; k++) {
+            const B = b(k + 2);
+            const f = SEAM[k];
+            const c0 = B - 0.75, cd = 1.4;
+            pageUp(k + 1, B - 0.85, 0.9);
+            cam(c0, cd, ST(k + 1), f.ease, { ...ST(k + 1), ...f.mid });
+            showOnly(near(k, true), c0);
+            showOnly(near(k + 1), c0 + cd);
+            pageDown(k, B - 0.05, 0.65);
+            const m0 = B - 0.65, md = 1.2;
+            if (f.move === "trot") {
+              pose("run", m0);
+              travel(m0, md, PHI(k + 1));
+              trot(m0, md, 30, 5);
+            } else if (f.move === "hop") {
+              pose("meow", m0);
+              travel(m0, md, PHI(k + 1), "power1.inOut");
+              tl.to(hop, { y: -320, duration: md / 2, ease: "power2.out" }, m0);
+              tl.to(hop, { y: 0, duration: md / 2, ease: "power2.in" }, m0 + md / 2);
+            } else if (f.move === "dash") {
+              pose("run", m0);
+              travel(m0, md, PHI(k + 1), "expo.inOut");
+              trot(m0, md, 18, 7);
+            } else if (f.move === "brake") {
+              travel(m0, md, PHI(k + 1), "power4.out");
+              trot(m0, md * 0.5, 16, 4);
+              tl.to(hop, { rotationZ: -12, duration: 0.2, ease: "power2.out" }, m0 + md * 0.55);
+              tl.to(hop, { rotationZ: 0, duration: 0.35, ease: "back.out(3)" }, m0 + md * 0.8);
+            } else if (f.move === "hopbox") {
+              pose("meow", m0);
+              travel(m0, md, PHI(k + 1), "power1.inOut");
+              tl.to(hop, { y: -420, duration: md * 0.55, ease: "power2.out" }, m0);
+              tl.to(hop, { y: 0, duration: md * 0.45, ease: "power2.in" }, m0 + md * 0.55);
+            }
+            pose(ARRIVE[k + 1], m0 + md);
+            squash(m0 + md, 1.12, 0.88, 0.35);
+            // spine: stabilo creeps to the next station
+            tl.to(ringhi, { ...ringTo((k + 0.5) / N), duration: 0.9, ease: "power2.out" }, B + 0.3);
+          }
+
+          // --- ② Peregangan: stretch x1.6 feel, then spring back ---
+          {
+            const s = b(3), d = PH[3].d;
+            tl.to(body, { scaleX: 1.38, scaleY: 0.9, duration: 0.7, ease: "power2.out" }, s + 0.55);
+            tl.to(body, { scaleX: 1, scaleY: 1, duration: 0.6, ease: "elastic.out(1, 0.45)" }, s + Math.min(2.0, d - 0.9));
+          }
+          // --- ③ Alarm: three meows, each bigger; pillow flinches ---
+          {
+            const s = b(4);
+            [0.55, 1.25, 1.95].forEach((u, i) => {
+              squash(s + u, 1 - 0.03 * (i + 1), 1 + 0.06 * (i + 1), 0.4);
+              if (pillow) {
+                tl.to(pillow, { rotation: i % 2 ? 4 : -4, y: -10, duration: 0.08 }, s + u + 0.05);
+                tl.to(pillow, { rotation: 0, y: 0, duration: 0.3, ease: "elastic.out(1,0.3)" }, s + u + 0.13);
+              }
+            });
+          }
+          // --- ④ Makan: three chews ---
+          {
+            const s = b(5);
+            const head = $("#w-head-eat");
+            [0.45, 0.95, 1.45].forEach((u) => {
+              tl.to(head, { y: 14, duration: 0.14, ease: "power2.in" }, s + u);
+              tl.to(head, { y: 0, duration: 0.24, ease: "back.out(3)" }, s + u + 0.14);
+            });
+          }
+          // --- ⑤ Zoomies: run in place, strips stream past, sudden stop at the end ---
+          {
+            const s = b(6), d = PH[6].d;
+            // airborne gallop above the ZOOMIES trail (sketch: he runs over the letters)
+            const n = Math.max(2, Math.round((d - 1.1) / 0.16));
+            const st = (d - 1.1) / n;
+            tl.to(hop, { y: -120, duration: 0.2, ease: "power2.out" }, s);
+            for (let i = 0; i < n; i++) {
+              tl.to(hop, { y: -150, duration: st / 2, ease: "sine.out" }, s + 0.2 + i * st);
+              tl.to(hop, { y: -110, duration: st / 2, ease: "sine.in" }, s + 0.2 + i * st + st / 2);
+            }
+            tl.to(hop, { y: 0, duration: 0.25, ease: "power2.in" }, s + d - 0.9);
+            speeds.forEach((el, i) => {
+              tl.fromTo(el, { x: 260 + i * 80 }, { x: -520 - i * 160, duration: d - 0.9, ease: "none" }, s);
+              tl.to(el, { opacity: 0, duration: 0.25 }, s + d - 1.0);
+            });
+          }
+          // --- ⑥ Gravitasi: three nudges, the fall, a held stare ---
+          {
+            const s = b(7);
+            const paw = $("#w-paw");
+            // slow-fast-slow nudges, the fall, then ~0.7 s held stare before the camera leaves
+            [0.3, 0.7, 1.1].forEach((u, i) => {
+              tl.to(paw, { x: 26, duration: 0.16, ease: "power2.out" }, s + u);
+              tl.to(paw, { x: 0, duration: 0.22, ease: "power2.inOut" }, s + u + 0.18);
+              tl.to(glass, { x: 70 * (i + 1), duration: 0.2, ease: "power2.out" }, s + u + 0.05);
+            });
+            tl.to(glass, { x: 290, y: 60, rotation: 40, duration: 0.3, ease: "power1.in" }, s + 1.4);
+            tl.to(glass, { y: 430, rotation: 120, duration: 0.33, ease: "power2.in" }, s + 1.7);
+            tl.to(glass, { opacity: 0, duration: 0.05 }, s + 2.03);
+          }
+          // --- ⑦ Kardus: box flexes as Romeow lands in it ---
+          {
+            const s = b(8);
+            tl.fromTo(hop, { y: 90 }, { y: 0, duration: 0.5, ease: "back.out(2.2)" }, s + 0.05);
+            if (box) {
+              tl.to(box, { scaleY: 0.86, scaleX: 1.06, transformOrigin: "50% 100%", duration: 0.12 }, s - 0.05);
+              tl.to(box, { scaleY: 1, scaleX: 1, duration: 0.5, ease: "elastic.out(1,0.35)" }, s + 0.07);
+            }
+          }
+
+          // --- P9 · penutup: pull up to the overview, Romeow walks home and lies down ---
+          {
+            const B = b(9), E = PH[9].e;
+            const OVEND = { ...OV, az: OV.az - 360 }; // same pose as t = 0, reached by continuing clockwise
+            cam(B - 0.55, 2.2, OVEND, "power2.inOut", { ...OVEND, dist: 2600, rx: 40, ty: -300 });
+            showOnly(ALL, B - 0.55 + 0.9);
+            pageDown(7, B + 0.35, 0.8);
+            pose("meow", B - 0.45);
+            tl.to(hop, { y: -300, duration: 0.3, ease: "power2.out" }, B - 0.45);
+            tl.to(hop, { y: 0, duration: 0.3, ease: "power2.in" }, B - 0.15);
+            pose("run", B + 0.15);
+            travel(B + 0.15, 1.75, PHI(1) - 360, "power1.inOut"); // keep circling the same way; -360 == loop start
+            trot(B + 0.15, 1.75, 26, 8);
+            pose("sleep", B + 1.95);
+            tl.to(fold, { rotationX: FLAT, duration: 0.6, ease: "power2.inOut" }, B + 2.0);
+            tl.to(hop, { y: LIFT, duration: 0.4, ease: "power2.out" }, B + 2.2);
+            tl.to(diagram, { opacity: 1, duration: 0.6 }, B + 1.2);
+            tl.to(ringhi, { ...ringTo(1), duration: 0.9, ease: "power2.inOut" }, B + 0.4);
+            tl.to(ringhi, { opacity: 0, duration: 0.5 }, E - 0.75);
+            tl.set(ringhi, { attr: { "stroke-dasharray": `0 ${RINGC.toFixed(1)}` } }, E - 0.2);
+            tl.set(ringhi, { opacity: 1 }, E - 0.15);
+            tl.to(titleHi, { scaleX: 0, transformOrigin: "100% 50%", duration: 0.4, ease: "power2.in" }, E - 0.8);
+            // props on the folded pages return to their t = 0 state so the loop is seamless
+            tl.set(glass, { x: 0, y: 0, rotation: 0 }, B + 1.0);
+            tl.to(glass, { opacity: 1, duration: 0.5 }, B + 1.05);
+            speeds.forEach((el, i) => {
+              tl.set(el, { x: 260 + i * 80 }, B + 1.0);
+              tl.to(el, { opacity: 1, duration: 0.5 }, B + 1.05);
+            });
+          }
+
+          // render every tween once so start values are recorded in order, then rest on t = 0
+          tl.seek(tl.duration(), true).seek(0, true);
+          window.__romeowWorld = { tl: tl, PH: PH, PHI: PHI, A: A, OV: OV };
+          window.__timelines["world"] = tl;
+        })();
+      </script>
+    </template>
+  </body>
+</html>

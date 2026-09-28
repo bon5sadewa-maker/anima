@@ -1,9 +1,10 @@
-<!doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html lang="id">
   <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=1920, height=1080" />
-    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=1080, height=1920">
+    <title>Siklus Hidup Romeow</title>
+    <script src="assets/vendor/gsap-3.14.2.min.js"></script>
     <style>
       * {
         margin: 0;
@@ -13,43 +14,46 @@
       html,
       body {
         margin: 0;
-        width: 1920px;
-        height: 1080px;
+        width: 1080px;
+        height: 1920px;
         overflow: hidden;
-        background: #0a0a0a;
+        background: #cfc3aa;
       }
       #root {
+        position: relative;
         width: 100%;
         height: 100%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-family: Inter, ui-sans-serif, system-ui, sans-serif;
+        overflow: hidden;
       }
-      #title {
-        color: #f4f4f5;
-        font-size: 72px;
-        font-weight: 600;
-        letter-spacing: -0.03em;
+      #root > div[data-composition-src] {
+        position: absolute;
+        inset: 0;
       }
     </style>
   </head>
   <body>
-    <div
-      id="root"
-      data-composition-id="main"
-      data-start="0"
-      data-duration="10"
-      data-width="1920"
-      data-height="1080"
-    >
-      <h1 id="title" class="clip" data-start="0" data-duration="10" data-track-index="0">Title</h1>
+    <!--
+      Siklus Hidup Romeow — 30 s, 1080x1920, seamless loop.
+      Track 0: the 3D pop-up world + Romeow (one continuous actor).
+      Track 1: one clip per phase (typography). Drag or trim these in Studio:
+      the world reads their start/duration, so the camera flights and Romeow's
+      walks move with them. Keep phases back to back and the root at 30 s
+      (or change data-duration below if you lengthen the whole piece).
+    -->
+    <div data-hf-id="hf-05yj" id="root" data-composition-id="main" data-width="1080" data-height="1920" data-duration="30">
+      <div id="world" data-composition-id="world" data-composition-src="compositions/world.html" data-start="0" data-duration="30" data-track-index="0" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-9961" id="p01" data-phase="1" data-composition-id="p01" data-composition-src="compositions/p01-pembuka.html" data-start="0" data-duration="3" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-1cij" id="p02" data-phase="2" data-composition-id="p02" data-composition-src="compositions/p02-hibernasi.html" data-start="3" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-ux2r" id="p03" data-phase="3" data-composition-id="p03" data-composition-src="compositions/p03-peregangan.html" data-start="6.5" data-duration="3" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-3hq4" id="p04" data-phase="4" data-composition-id="p04" data-composition-src="compositions/p04-alarm.html" data-start="9.5" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-qunt" id="p05" data-phase="5" data-composition-id="p05" data-composition-src="compositions/p05-makan.html" data-start="13" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-3kz3" id="p06" data-phase="6" data-composition-id="p06" data-composition-src="compositions/p06-zoomies.html" data-start="16.5" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-8ljd" id="p07" data-phase="7" data-composition-id="p07" data-composition-src="compositions/p07-gravitasi.html" data-start="20" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-ke2d" id="p08" data-phase="8" data-composition-id="p08" data-composition-src="compositions/p08-kardus.html" data-start="23.5" data-duration="3.5" data-track-index="1" data-track-kind="graphics"></div>
+      <div data-hf-id="hf-2req" id="p09" data-phase="9" data-composition-id="p09" data-composition-src="compositions/p09-penutup.html" data-start="27" data-duration="3" data-track-index="1" data-track-kind="graphics"></div>
     </div>
     <script>
-      const tl = gsap.timeline({ paused: true });
-      // Example: tl.fromTo("#title", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.6 }, 0);
-      window.__timelines["main"] = tl;
-      tl.seek(0);
+      window.__timelines["main"] = gsap.timeline({ paused: true });
     </script>
   </body>
 </html>
